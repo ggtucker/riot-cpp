@@ -1,0 +1,11 @@
+Debug
+Release
+main.cpp
+riot-cpp.sdf
+riot-cpp.sln
+riot-cpp.vcxproj
+riot-cpp.vcxproj.filters
+riot-cpp.opensdf
+riot-cpp.v11.suo
+lib/libcurl_imp-d.lib
+lib/libcurl_imp-r.lib
