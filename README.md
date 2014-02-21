@@ -2,6 +2,8 @@ riot-cpp
 ========
 C++ League of Legends API Wrapper
 
-Development begun 2/20/2014
+This API wrapper depends on both curl and rapidjson libraries. These submodules can be found in the /lib/ folder.
 
-- Geoffrey Tucker
+- Rapidjson is a header-only C++ library, but Curl must be compiled and linked on your individual system.
+
+Thanks, Geoffrey Tucker
