@@ -1,6 +1,6 @@
 Debug
 Release
-main.cpp
+src/main.cpp
 riot-cpp.sdf
 riot-cpp.sln
 riot-cpp.vcxproj
