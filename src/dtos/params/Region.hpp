@@ -19,7 +19,7 @@ namespace Riot
 		TR
 	};
 
-	std::string getRegionName(Region reg);
+	std::string toString(Region reg);
 }
 
 #endif // REGION_HPP

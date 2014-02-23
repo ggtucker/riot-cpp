@@ -23,7 +23,7 @@
 
 namespace Riot
 {
-	/* By default, RiotAPI will use these fields
+	/* By default, functions will use these fields
 	   unless otherwise specified. */
 	extern std::string api_key; // ""
 	extern Region region;       // Region::NA
@@ -53,22 +53,22 @@ namespace Riot
 	// ----------API Resource: lol-static-data-v1---------- //
 
 		/* Retrieves champion data by ID */
-		Champion getChampionData(long long championID, ChampData cdata=ChampData::ALL);
+		ChampionData getChampionData(long long championID, ChampData cdata=ChampData::ALL);
 
 		/* Retrieves list of champion data */
-		ChampionList getChampionListData(ChampData cdata=ChampData::ALL);
+		ChampionDataList getChampionDataList(ChampData cdata=ChampData::ALL);
 
 		/* Retrieves item data by ID */
 		Item getItemData(long long itemID, ItemData idata=ItemData::ALL);
 
 		/* Retrieves list of item data */
-		ItemList getItemListData(ItemListData ildata=ItemListData::ALL);
+		ItemList getItemDataList(ItemListData ildata=ItemListData::ALL);
 
 		/* Retrieves mastery data by ID */
 		Mastery getMasteryData(long long masteryID, MasteryData mdata=MasteryData::ALL);
 
 		/* Retrieves list of mastery data */
-		MasteryList getMasteryListData(MasteryListData mldata=MasteryListData::ALL);
+		MasteryList getMasteryDataList(MasteryListData mldata=MasteryListData::ALL);
 
 		/* Retrieves realm data */
 		Realm getRealmData();
@@ -77,21 +77,21 @@ namespace Riot
 		Rune getRuneData(long long runeID, RuneData rdata=RuneData::ALL);
 
 		/* Retrieves list of rune data */
-		RuneList getRuneListData(RuneListData rldata=RuneListData::ALL);
+		RuneList getRuneDataList(RuneListData rldata=RuneListData::ALL);
 
 		/* Retrieves spell data by ID */
 		SummonerSpell getSpellData(long long spellID, SpellData sdata=SpellData::ALL);
 
 		/* Retrieves list of spell data */
-		SummonerSpellList getSpellListData(SpellData sdata=SpellData::ALL);
+		SummonerSpellList getSpellDataList(SpellData sdata=SpellData::ALL);
 
 	// ----------API Resource: stats-v1.2---------- //
 
 		/* Retrieves player stats summaries */
-		PlayerStatsSummaryList getPlayerStats(long long summonerID, Season season=Season::SEASON_4);
+		PlayerStatsSummaryList getPlayerStats(long long summonerID, Season season=Season::SEASON4);
 
 		/* Retrieves player ranked stats */
-		RankedStats getRankedStats(long long summonerID, Season season=Season::SEASON_4);
+		RankedStats getRankedStats(long long summonerID, Season season=Season::SEASON4);
 
 	// ----------API Resource: summoner-v1.3---------- //
 
@@ -99,13 +99,13 @@ namespace Riot
 		MasteryPages getMasteryPages(long long summonerID);
 
 		/* Retrieves mastery pages for each of the given summoner IDs */
-		std::map<std::string, MasteryPages> getMasteryPages(const std::vector<long long>& summonerIDs);
+		std::map<long long, MasteryPages> getMasteryPages(const std::vector<long long>& summonerIDs);
 
 		/* Retrieves rune pages for given summoner ID */
 		RunePages getRunePages(long long summonerID);
 
 		/* Retrieves rune pages for each of the given summoner IDs */
-		std::map<std::string, RunePages> getRunePages(const std::vector<long long>& summonerIDs);
+		std::map<long long, RunePages> getRunePages(const std::vector<long long>& summonerIDs);
 
 		/* Retrieves summoner for given summoner name */
 		Summoner getSummoner(const std::string& summonerName);
@@ -117,13 +117,13 @@ namespace Riot
 		std::string getSummonerName(long long summonerID);
 
 		/* Retrieves summoner name for each of the given summoner IDs */
-		std::map<std::string, std::string> getSummonerNames(const std::vector<long long>& summonerIDs);
+		std::map<long long, std::string> getSummonerNames(const std::vector<long long>& summonerIDs);
 
 		/* Retrieves summoner for given summoner ID */
 		Summoner getSummoner(long long summonerID);
 
 		/* Retrieves summoner for each of the given summoner IDs */
-		std::map<std::string, Summoner> getSummoners(const std::vector<long long>& summonerIDs);
+		std::map<long long, Summoner> getSummoners(const std::vector<long long>& summonerIDs);
 
 	// ----------API Resource: team-v2.2---------- //
 
@@ -134,7 +134,15 @@ namespace Riot
 		Team getTeam(long long teamID);
 
 		/* Retrieves team for each of the given team IDs */
-		std::map<std::string, Team> getTeams(const std::vector<long long>& teamIDs);
+		std::map<long long, Team> getTeams(const std::vector<long long>& teamIDs);
+
+	// ----------Helper Functions---------- //
+
+		/* Returns ids in a comma delimited string */
+		std::string formatIDList(const std::vector<long long>& ids);
+
+		/* Returns names in a comma delimited string */
+		std::string formatIDList(const std::vector<std::string>& names);
 }
 
 #endif // RIOT_API_HPP

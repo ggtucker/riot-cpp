@@ -1,6 +1,8 @@
 #ifndef MASTERY_LIST_DATA_HPP
 #define MASTERY_LIST_DATA_HPP
 
+#include <string>
+
 namespace Riot
 {
 	enum class MasteryListData
@@ -11,6 +13,8 @@ namespace Riot
 		RANKS,
 		TREE
 	};
+
+	std::string toString(MasteryListData masteryListData);
 }
 
 #endif // MASTERY_LIST_DATA_HPP

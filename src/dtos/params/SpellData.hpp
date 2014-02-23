@@ -1,28 +1,33 @@
 #ifndef SPELL_DATA_HPP
 #define SPELL_DATA_HPP
 
+#include <string>
+
 namespace Riot
 {
 	enum class SpellData
 	{
 		ALL = 0,
-		KEY,
-		IMAGE,
 		TOOL_TIP,
+		LEVEL_TIP,
+		IMAGE,
 		RESOURCE,
 		MAX_RANK,
-		MODES,
-		COST_TYPE,
 		COST,
+		COST_TYPE,
 		COST_BURN,
-		RANGE,
-		RANGE_BURN,
-		EFFECT,
-		EFFECT_BURN,
 		COOLDOWN,
 		COOLDOWN_BURN,
-		VARS
+		EFFECT,
+		EFFECT_BURN,
+		VARS,
+		RANGE,
+		RANGE_BURN,
+		KEY,
+		MODES
 	};
+
+	std::string toString(SpellData spellData);
 }
 
 #endif // SPELL_DATA_HPP

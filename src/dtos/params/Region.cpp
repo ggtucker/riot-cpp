@@ -2,7 +2,7 @@
 
 namespace Riot
 {
-	std::string getRegionName(Region reg)
+	std::string toString(Region reg)
 	{
 		switch(reg)
 		{

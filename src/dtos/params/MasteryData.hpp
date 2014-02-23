@@ -1,5 +1,7 @@
 #ifndef MASTERY_DATA_HPP
-#define MASTER_DATA_HPP
+#define MASTERY_DATA_HPP
+
+#include <string>
 
 namespace Riot
 {
@@ -10,6 +12,8 @@ namespace Riot
 		PREREQ,
 		IMAGE
 	};
+
+	std::string toString(MasteryData masteryData);
 }
 
 #endif // MASTERY_DATA_HPP

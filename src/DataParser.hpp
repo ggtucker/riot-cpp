@@ -1,6 +1,9 @@
 #ifndef DATA_PARSER_HPP
 #define DATA_PARSER_HPP
 
+#include <map>
+#include <vector>
+#include <string>
 #include <rapidjson\reader.h>
 #include <rapidjson\document.h>
 #include "dtos/Champion.hpp"
@@ -55,12 +58,15 @@ namespace Riot
 		ItemList parseItemList(const Value& json);
 		ItemTree parseItemTree(const Value& json);
 		League parseLeague(const Value& json);
+		std::vector<League> parseLeagueList(const Value& json);
 		LeagueItem parseLeagueItem(const Value& json);
+		std::vector<LeagueItem> parseLeagueItemList(const Value& json);
 		LevelTip parseLevelTip(const Value& json);
 		Mastery parseMastery(const Value& json);
 		MasteryList parseMasteryList(const Value& json);
 		MasteryPage parseMasteryPage(const Value& json);
 		MasteryPages parseMasteryPages(const Value& json);
+		std::map<long long, MasteryPages> parseMasteryPagesMap(const Value& json);
 		MasteryTree parseMasteryTree(const Value& json);
 		MasteryTreeItem parseMasteryTreeItem(const Value& json);
 		MasteryTreeList parseMasteryTreeList(const Value& json);
@@ -82,16 +88,22 @@ namespace Riot
 		RuneList parseRuneList(const Value& json);
 		RunePage parseRunePage(const Value& json);
 		RunePages parseRunePages(const Value& json);
+		std::map<long long, RunePages> parseRunePagesById(const Value& json);
 		RuneSlot parseRuneSlot(const Value& json);
 		RuneSlotted parseRuneSlotted(const Value& json);
 		Skin parseSkin(const Value& json);
 		SpellVars parseSpellVars(const Value& json);
 		Stats parseStats(const Value& json);
 		Summoner parseSummoner(const Value& json);
+		std::map<long long, std::string> parseSummonerNamesById(const Value& json);
+		std::map<long long, Summoner> parseSummonersById(const Value& json);
+		std::map<std::string, Summoner> parseSummonersByName(const Value& json);
 		SummonerSpell parseSummonerSpell(const Value& json);
 		SummonerSpellList parseSummonerSpellList(const Value& json);
 		Talent parseTalent(const Value& json);
 		Team parseTeam(const Value& json);
+		std::vector<Team> parseTeamList(const Value& json);
+		std::map<std::string, Team> parseTeamsById(const Value& json);
 		TeamMemberInfo parseTeamMemberInfo(const Value& json);
 		TeamStatDetail parseTeamStatDetail(const Value& json);
 		TeamStatSummary parseTeamStatSummary(const Value& json);

@@ -1,6 +1,8 @@
 #ifndef CHAMP_DATA_HPP
 #define CHAMP_DATA_HPP
 
+#include <string>
+
 namespace Riot
 {
 	enum class ChampData
@@ -20,6 +22,8 @@ namespace Riot
 		PASSIVE,
 		RECOMMENDED
 	};
+
+	std::string toString(ChampData champData);
 }
 
 #endif // CHAMP_DATA_HPP

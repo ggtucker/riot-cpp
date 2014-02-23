@@ -152,7 +152,6 @@ namespace Riot
 			return blockItem;
 		}
 
-
 		Champion parseChampion(const Value& json)
 		{
 			Champion champion;
@@ -292,11 +291,25 @@ namespace Riot
 			return league;
 		}
 
+		std::vector<League> parseLeagueList(const Value& json)
+		{
+			std::vector<League> leagueList;
+
+			return leagueList;
+		}
+
 		LeagueItem parseLeagueItem(const Value& json)
 		{
 			LeagueItem leagueItem;
 
 			return leagueItem;
+		}
+
+		std::vector<LeagueItem> parseLeagueItemList(const Value& json)
+		{
+			std::vector<LeagueItem> leagueItemList;
+
+			return leagueItemList;
 		}
 
 		LevelTip parseLevelTip(const Value& json)
@@ -332,6 +345,13 @@ namespace Riot
 			MasteryPages masteryPages;
 
 			return masteryPages;
+		}
+
+		std::map<long long, MasteryPages> parseMasteryPagesMap(const Value& json)
+		{
+			std::map<long long, MasteryPages> masteryPagesMap;
+
+			return masteryPagesMap;
 		}
 
 		MasteryTree parseMasteryTree(const Value& json)
@@ -481,6 +501,13 @@ namespace Riot
 			return runePages;
 		}
 
+		std::map<long long, RunePages> parseRunePagesById(const Value& json)
+		{
+			std::map<long long, RunePages> runePagesById;
+
+			return runePagesById;
+		}
+
 		RuneSlot parseRuneSlot(const Value& json)
 		{
 			RuneSlot runeSlot;
@@ -523,6 +550,27 @@ namespace Riot
 			return summoner;
 		}
 
+		std::map<long long, std::string> parseSummonerNamesById(const Value& json)
+		{
+			std::map<long long, std::string> summonerNamesById;
+
+			return summonerNamesById;
+		}
+
+		std::map<long long, Summoner> parseSummonersById(const Value& json)
+		{
+			std::map<long long, Summoner> summonersById;
+
+			return summonersById;
+		}
+
+		std::map<std::string, Summoner> parseSummonersByName(const Value& json)
+		{
+			std::map<std::string, Summoner> summonersByName;
+
+			return summonersByName;
+		}
+
 		SummonerSpell parseSummonerSpell(const Value& json)
 		{
 			SummonerSpell summonerSpell;
@@ -549,6 +597,20 @@ namespace Riot
 			Team team;
 
 			return team;
+		}
+
+		std::vector<Team> parseTeamList(const Value& json)
+		{
+			std::vector<Team> teamList;
+
+			return teamList;
+		}
+
+		std::map<std::string, Team> parseTeamsById(const Value& json)
+		{
+			std::map<std::string, Team> teamsById;
+
+			return teamsById;
 		}
 
 		TeamMemberInfo parseTeamMemberInfo(const Value& json)
