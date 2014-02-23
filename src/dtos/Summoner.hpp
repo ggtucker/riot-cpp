@@ -2,16 +2,17 @@
 #define SUMMONER_HPP
 
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct Summoner
 	{
-		long long id;
-		std::string name;
-		int profileIconId;
-		long long revisionDate;
-		long long summonerLevel;
+		DTOField<long long> id;
+		DTOField<std::string> name;
+		DTOField<int> profileIconId;
+		DTOField<long long> revisionDate;
+		DTOField<long long> summonerLevel;
 	};
 }
 

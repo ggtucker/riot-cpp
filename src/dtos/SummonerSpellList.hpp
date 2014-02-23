@@ -3,15 +3,16 @@
 
 #include <map>
 #include <string>
+#include "DTOField.hpp"
 #include "SummonerSpell.hpp"
 
 namespace Riot
 {
 	struct SummonerSpellList
 	{
-		std::map<std::string, SummonerSpell> data;
-		std::string type;
-		std::string version;
+		DTOField<std::map<std::string, SummonerSpell>> data;
+		DTOField<std::string> type;
+		DTOField<std::string> version;
 	};
 }
 

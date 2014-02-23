@@ -2,22 +2,23 @@
 #define CHAMPION_HPP
 
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct Champion
 	{
-		bool active;
-		int attackRank;
-		bool botEnabled;
-		bool botMmEnabled;
-		int defenseRank;
-		int difficultyRank;
-		bool freeToPlay;
-		long long id;
-		int magicRank;
-		std::string name;
-		bool rankedPlayEnabled;
+		DTOField<bool> active;
+		DTOField<int> attackRank;
+		DTOField<bool> botEnabled;
+		DTOField<bool> botMmEnabled;
+		DTOField<int> defenseRank;
+		DTOField<int> difficultyRank;
+		DTOField<bool> freeToPlay;
+		DTOField<long long> id;
+		DTOField<int> magicRank;
+		DTOField<std::string> name;
+		DTOField<bool> rankedPlayEnabled;
 	};
 }
 

@@ -3,16 +3,17 @@
 
 #include <map>
 #include <string>
+#include "DTOField.hpp"
 #include "BasicData.hpp"
 
 namespace Riot
 {
 	struct RuneList
 	{
-		BasicData basic;
-		std::map<std::string, Rune> data;
-		std::string type;
-		std::string version;
+		DTOField<BasicData> basic;
+		DTOField<std::map<std::string, Rune>> data;
+		DTOField<std::string> type;
+		DTOField<std::string> version;
 	};
 }
 

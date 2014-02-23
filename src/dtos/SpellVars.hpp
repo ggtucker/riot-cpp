@@ -2,14 +2,15 @@
 #define SPELL_VARS_HPP
 
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct SpellVars
 	{
-		std::string link;
-		double coeff;
-		std::string key;
+		DTOField<std::string> link;
+		DTOField<double> coeff;
+		DTOField<std::string> key;
 	};
 }
 

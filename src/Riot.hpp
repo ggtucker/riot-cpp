@@ -131,10 +131,10 @@ namespace Riot
 		std::vector<Team> getTeams(long long summonerID);
 
 		/* Retrieves team for given team ID */
-		Team getTeam(long long teamID);
+		Team getTeam(std::string teamID);
 
 		/* Retrieves team for each of the given team IDs */
-		std::map<long long, Team> getTeams(const std::vector<long long>& teamIDs);
+		std::map<std::string, Team> getTeams(const std::vector<std::string>& teamIDs);
 
 	// ----------Helper Functions---------- //
 
@@ -142,7 +142,7 @@ namespace Riot
 		std::string formatIDList(const std::vector<long long>& ids);
 
 		/* Returns names in a comma delimited string */
-		std::string formatIDList(const std::vector<std::string>& names);
+		std::string formatIDList(const std::vector<std::string>& ids);
 }
 
 #endif // RIOT_API_HPP

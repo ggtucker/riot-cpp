@@ -88,7 +88,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseLeagueItems(json);
+			return DataParser::parseLeagueItemList(json);
 		}
 
 		/* Retrieves leagues data for each of summoner's teams */
@@ -104,7 +104,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseLeagues(json);
+			return DataParser::parseLeagueList(json);
 		}
 
 	// ----------API Resource: lol-static-data-v1---------- //
@@ -511,9 +511,9 @@ namespace Riot
 		{
 			std::string formatted = "";
 
-			for(int i = 0; i < ids.size(); i++)
+			for(unsigned i = 0; i < ids.size(); i++)
 			{
-				formatted += ids[i];
+				formatted += std::to_string(ids[i]);
 
 				if(i != ids.size()-1)
 					formatted += ",";
@@ -527,7 +527,7 @@ namespace Riot
 		{
 			std::string formatted = "";
 
-			for(int i = 0; i < ids.size(); i++)
+			for(unsigned i = 0; i < ids.size(); i++)
 			{
 				formatted += ids[i];
 

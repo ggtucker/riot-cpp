@@ -3,20 +3,21 @@
 
 #include <map>
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct Realm
 	{
-		std::string cdn;
-		std::string css;
-		std::string dd;
-		std::string l;
-		std::string lg;
-		std::map<std::string, std::string> n;
-		int profileiconmax;
-		std::string store;
-		std::string v;
+		DTOField<std::string> cdn;
+		DTOField<std::string> css;
+		DTOField<std::string> dd;
+		DTOField<std::string> l;
+		DTOField<std::string> lg;
+		DTOField<std::map<std::string, std::string>> n;
+		DTOField<int> profileiconmax;
+		DTOField<std::string> store;
+		DTOField<std::string> v;
 	};
 }
 

@@ -3,18 +3,19 @@
 
 #include <vector>
 #include <string>
+#include "DTOField.hpp"
 #include "Image.hpp"
 
 namespace Riot
 {
 	struct Mastery
 	{
-		std::vector<std::string> description;
-		int id;
-		Image image;
-		std::string name;
-		std::string prereq;
-		int ranks;
+		DTOField<std::vector<std::string>> description;
+		DTOField<int> id;
+		DTOField<Image> image;
+		DTOField<std::string> name;
+		DTOField<std::string> prereq;
+		DTOField<int> ranks;
 	};
 }
 

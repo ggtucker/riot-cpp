@@ -1,13 +1,15 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
+#include "DTOField.hpp"
+
 namespace Riot
 {
 	struct Player
 	{
-		int championId;
-		long long summonerId;
-		int teamId;
+		DTOField<int> championId;
+		DTOField<long long> summonerId;
+		DTOField<int> teamId;
 	};
 }
 

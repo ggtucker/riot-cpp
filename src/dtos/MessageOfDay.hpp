@@ -2,14 +2,15 @@
 #define MESSAGE_OF_DAY_HPP
 
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct MessageOfDay
 	{
-		long long createDate;
-		std::string message;
-		int version;
+		DTOField<long long> createDate;
+		DTOField<std::string> message;
+		DTOField<int> version;
 	};
 }
 

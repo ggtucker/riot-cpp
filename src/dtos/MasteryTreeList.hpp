@@ -2,13 +2,14 @@
 #define MASTERY_TREE_LIST_HPP
 
 #include <vector>
+#include "DTOField.hpp"
 #include "MasteryTreeItem.hpp"
 
 namespace Riot
 {
 	struct MasteryTreeList
 	{
-		std::vector<MasteryTreeItem> masteryTreeItems;
+		DTOField<std::vector<MasteryTreeItem>> masteryTreeItems;
 	};
 }
 

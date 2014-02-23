@@ -2,13 +2,14 @@
 #define RUNE_SLOT_HPP
 
 #include "RuneSlotted.hpp"
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct RuneSlot
 	{
-		RuneSlotted rune;
-		int runeSlotId;
+		DTOField<RuneSlotted> rune;
+		DTOField<int> runeSlotId;
 	};
 }
 

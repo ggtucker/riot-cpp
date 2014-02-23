@@ -2,14 +2,15 @@
 #define TALENT_HPP
 
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct Talent
 	{
-		int id;
-		std::string name;
-		int rank;
+		DTOField<int> id;
+		DTOField<std::string> name;
+		DTOField<int> rank;
 	};
 }
 

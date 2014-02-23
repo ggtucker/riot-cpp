@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "DTOField.hpp"
 #include "Image.hpp"
 #include "Info.hpp"
 #include "Passive.hpp"
@@ -15,23 +16,23 @@ namespace Riot
 {
 	struct ChampionData
 	{
-		std::vector<std::string> allytips;
-		std::string blurb;
-		std::vector<std::string> enemytips;
-		std::string id;
-		Image image;
-		Info info;
-		std::string key;
-		std::string lore;
-		std::string name;
-		std::string partype;
-		Passive passive;
-		std::vector<Recommended> recommended;
-		std::vector<Skin> skins;
-		std::vector<ChampionSpell> spells;
-		Stats stats;
-		std::vector<std::string> tags;
-		std::string title;
+		DTOField<std::vector<std::string>> allytips;
+		DTOField<std::string> blurb;
+		DTOField<std::vector<std::string>> enemytips;
+		DTOField<std::string> id;
+		DTOField<Image> image;
+		DTOField<Info> info;
+		DTOField<std::string> key;
+		DTOField<std::string> lore;
+		DTOField<std::string> name;
+		DTOField<std::string> partype;
+		DTOField<Passive> passive;
+		DTOField<std::vector<Recommended>> recommended;
+		DTOField<std::vector<Skin>> skins;
+		DTOField<std::vector<ChampionSpell>> spells;
+		DTOField<Stats> stats;
+		DTOField<std::vector<std::string>> tags;
+		DTOField<std::string> title;
 	};
 }
 

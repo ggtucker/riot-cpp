@@ -2,14 +2,15 @@
 #define MASTERY_PAGES_HPP
 
 #include <vector>
+#include "DTOField.hpp"
 #include "MasteryPage.hpp"
 
 namespace Riot
 {
 	struct MasteryPages
 	{
-		std::vector<MasteryPage> pages;
-		long long summonerId;
+		DTOField<std::vector<MasteryPage>> pages;
+		DTOField<long long> summonerId;
 	};
 }
 

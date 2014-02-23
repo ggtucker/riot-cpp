@@ -3,16 +3,17 @@
 
 #include <vector>
 #include <string>
+#include "DTOField.hpp"
 #include "Talent.hpp"
 
 namespace Riot
 {
 	struct MasteryPage
 	{
-		bool current;
-		long long id;
-		std::string name;
-		std::vector<Talent> talents;
+		DTOField<bool> current;
+		DTOField<long long> id;
+		DTOField<std::string> name;
+		DTOField<std::vector<Talent>> talents;
 	};
 }
 

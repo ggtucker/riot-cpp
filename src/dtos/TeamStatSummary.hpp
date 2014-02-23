@@ -3,14 +3,15 @@
 
 #include <vector>
 #include <string>
+#include "DTOField.hpp"
 #include "TeamStatDetail.hpp"
 
 namespace Riot
 {
 	struct TeamStatSummary
 	{
-		std::string fullId;
-		std::vector<TeamStatDetail> teamStatDetails;
+		DTOField<std::string> fullId;
+		DTOField<std::vector<TeamStatDetail>> teamStatDetails;
 	};
 }
 

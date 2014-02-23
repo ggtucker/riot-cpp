@@ -2,14 +2,15 @@
 #define META_DATA_HPP
 
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct MetaData
 	{
-		bool isRune;
-		std::string tier;
-		std::string type;
+		DTOField<bool> isRune;
+		DTOField<std::string> tier;
+		DTOField<std::string> type;
 	};
 }
 

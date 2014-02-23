@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include <string>
+#include "DTOField.hpp"
 #include "BasicData.hpp"
 #include "Item.hpp"
 #include "Group.hpp"
@@ -13,12 +14,12 @@ namespace Riot
 {
 	struct ItemList
 	{
-		BasicData basic;
-		std::map<std::string, Item> data;
-		std::vector<Group> groups;
-		std::vector<ItemTree> tree;
-		std::string type;
-		std::string version;
+		DTOField<BasicData> basic;
+		DTOField<std::map<std::string, Item>> data;
+		DTOField<std::vector<Group>> groups;
+		DTOField<std::vector<ItemTree>> tree;
+		DTOField<std::string> type;
+		DTOField<std::string> version;
 	};
 }
 

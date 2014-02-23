@@ -3,16 +3,17 @@
 
 #include <vector>
 #include <string>
+#include "DTOField.hpp"
 #include "RuneSlot.hpp"
 
 namespace Riot
 {
 	struct RunePage
 	{
-		bool current;
-		long long id;
-		std::string name;
-		std::vector<RuneSlot> slots;
+		DTOField<bool> current;
+		DTOField<long long> id;
+		DTOField<std::string> name;
+		DTOField<std::vector<RuneSlot>> slots;
 	};
 }
 

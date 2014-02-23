@@ -2,14 +2,15 @@
 #define RECENT_GAMES_HPP
 
 #include <vector>
+#include "DTOField.hpp"
 #include "Game.hpp"
 
 namespace Riot
 {
 	struct RecentGames
 	{
-		std::vector<Game> games;
-		long long summonerId;
+		DTOField<std::vector<Game>> games;
+		DTOField<long long> summonerId;
 	};
 }
 

@@ -2,14 +2,15 @@
 #define SKIN_HPP
 
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct Skin
 	{
-		std::string id;
-		std::string name;
-		int num;
+		DTOField<std::string> id;
+		DTOField<std::string> name;
+		DTOField<int> num;
 	};
 }
 

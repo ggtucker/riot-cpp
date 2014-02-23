@@ -2,18 +2,19 @@
 #define IMAGE_HPP
 
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct Image
 	{
-		std::string full;
-		std::string group;
-		int h;
-		std::string sprite;
-		int w;
-		int x;
-		int y;
+		DTOField<std::string> full;
+		DTOField<std::string> group;
+		DTOField<int> h;
+		DTOField<std::string> sprite;
+		DTOField<int> w;
+		DTOField<int> x;
+		DTOField<int> y;
 	};
 }
 

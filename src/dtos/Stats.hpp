@@ -1,30 +1,32 @@
 #ifndef STATS_HPP
 #define STATS_HPP
 
+#include "DTOField.hpp"
+
 namespace Riot
 {
 	struct Stats
 	{
-		double armor;
-		double armorperlevel;
-		double attackdamage;
-		double attackdamageperlevel;
-		double attackrange;
-		double attackspeedoffset;
-		double attackspeedperlevel;
-		double crit;
-		double critperlevel;
-		double hp;
-		double hpperlevel;
-		double hpregen;
-		double hpregenperlevel;
-		double movespeed;
-		double mp;
-		double mpperlevel;
-		double mpregen;
-		double mpregenperlevel;
-		double spellblock;
-		double spellblockperlevel;
+		DTOField<double> armor;
+		DTOField<double> armorperlevel;
+		DTOField<double> attackdamage;
+		DTOField<double> attackdamageperlevel;
+		DTOField<double> attackrange;
+		DTOField<double> attackspeedoffset;
+		DTOField<double> attackspeedperlevel;
+		DTOField<double> crit;
+		DTOField<double> critperlevel;
+		DTOField<double> hp;
+		DTOField<double> hpperlevel;
+		DTOField<double> hpregen;
+		DTOField<double> hpregenperlevel;
+		DTOField<double> movespeed;
+		DTOField<double> mp;
+		DTOField<double> mpperlevel;
+		DTOField<double> mpregen;
+		DTOField<double> mpregenperlevel;
+		DTOField<double> spellblock;
+		DTOField<double> spellblockperlevel;
 	};
 }
 

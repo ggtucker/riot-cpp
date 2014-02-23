@@ -9,5 +9,6 @@ riot-cpp.vcxproj
 riot-cpp.vcxproj.filters
 riot-cpp.opensdf
 riot-cpp.v11.suo
+riot-cpp.psess
 lib/libcurl_imp-d.lib
 lib/libcurl_imp-r.lib

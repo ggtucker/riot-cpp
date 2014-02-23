@@ -2,14 +2,15 @@
 #define ROSTER_HPP
 
 #include <vector>
+#include "DTOField.hpp"
 #include "TeamMemberInfo.hpp"
 
 namespace Riot
 {
 	struct Roster
 	{
-		std::vector<TeamMemberInfo> memberList;
-		long long ownerId;
+		DTOField<std::vector<TeamMemberInfo>> memberList;
+		DTOField<long long> ownerId;
 	};
 }
 

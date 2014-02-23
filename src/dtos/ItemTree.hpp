@@ -3,13 +3,14 @@
 
 #include <vector>
 #include <string>
+#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct ItemTree
 	{
-		std::string header;
-		std::vector<std::string> tags;
+		DTOField<std::string> header;
+		DTOField<std::vector<std::string>> tags;
 	};
 }
 

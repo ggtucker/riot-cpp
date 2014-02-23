@@ -2,15 +2,16 @@
 #define CHAMPION_STATS_HPP
 
 #include <string>
+#include "DTOField.hpp"
 #include "AggregatedStats.hpp"
 
 namespace Riot
 {
 	struct ChampionStats
 	{
-		int id;
-		std::string name;
-		AggregatedStats stats;
+		DTOField<int> id;
+		DTOField<std::string> name;
+		DTOField<AggregatedStats> stats;
 	};
 }
 
