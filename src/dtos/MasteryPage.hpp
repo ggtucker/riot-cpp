@@ -5,12 +5,15 @@
 #include <string>
 #include "Talent.hpp"
 
-struct MasteryPage
+namespace Riot
 {
-	bool current;
-	long long id;
-	std::string name;
-	std::vector<Talent> talents;
-};
+	struct MasteryPage
+	{
+		bool current;
+		long long id;
+		std::string name;
+		std::vector<Talent> talents;
+	};
+}
 
 #endif // MASTERY_PAGE_HPP

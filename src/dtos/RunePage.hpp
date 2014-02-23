@@ -5,12 +5,15 @@
 #include <string>
 #include "RuneSlot.hpp"
 
-struct RunePage
+namespace Riot
 {
-	bool current;
-	long long id;
-	std::string name;
-	std::vector<RuneSlot> slots;
-};
+	struct RunePage
+	{
+		bool current;
+		long long id;
+		std::string name;
+		std::vector<RuneSlot> slots;
+	};
+}
 
 #endif // RUNE_PAGE_HPP

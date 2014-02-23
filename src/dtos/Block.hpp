@@ -5,10 +5,13 @@
 #include <string>
 #include "BlockItem.hpp"
 
-struct Block
+namespace Riot
 {
-	std::vector<BlockItem> items;
-	std::string type;
-};
+	struct Block
+	{
+		std::vector<BlockItem> items;
+		std::string type;
+	};
+}
 
 #endif // BLOCK_HPP

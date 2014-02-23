@@ -1,12 +1,15 @@
 #ifndef GOLD_HPP
 #define GOLD_HPP
 
-struct Gold
+namespace Riot
 {
-	int base;
-	bool purchasable;
-	int sell;
-	int total;
-};
+	struct Gold
+	{
+		int base;
+		bool purchasable;
+		int sell;
+		int total;
+	};
+}
 
 #endif // GOLD_HPP

@@ -5,10 +5,13 @@
 #include <string>
 #include "TeamStatDetail.hpp"
 
-struct TeamStatSummary
+namespace Riot
 {
-	std::string fullId;
-	std::vector<TeamStatDetail> teamStatDetails;
-};
+	struct TeamStatSummary
+	{
+		std::string fullId;
+		std::vector<TeamStatDetail> teamStatDetails;
+	};
+}
 
 #endif // TEAMSTAT__SUMMARY_HPP

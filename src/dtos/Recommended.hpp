@@ -5,15 +5,18 @@
 #include <string>
 #include "Block.hpp"
 
-struct Recommended
+namespace Riot
 {
-	std::vector<Block> blocks;
-	std::string champion;
-	std::string map;
-	std::string mode;
-	bool priority;
-	std::string title;
-	std::string type;
-};
+	struct Recommended
+	{
+		std::vector<Block> blocks;
+		std::string champion;
+		std::string map;
+		std::string mode;
+		bool priority;
+		std::string title;
+		std::string type;
+	};
+}
 
 #endif // RECOMMENDED_HPP

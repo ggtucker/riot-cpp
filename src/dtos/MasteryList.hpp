@@ -6,12 +6,15 @@
 #include "Mastery.hpp"
 #include "MasteryTree.hpp"
 
-struct MasteryList
+namespace Riot
 {
-	std::map<std::string, Mastery> data;
-	MasteryTree tree;
-	std::string type;
-	std::string version;
-};
+	struct MasteryList
+	{
+		std::map<std::string, Mastery> data;
+		MasteryTree tree;
+		std::string type;
+		std::string version;
+	};
+}
 
 #endif // MASTERY_LIST_HPP

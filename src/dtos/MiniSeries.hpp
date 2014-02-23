@@ -3,13 +3,16 @@
 
 #include <vector>
 
-struct MiniSeries
+namespace Riot
 {
-	int losses;
-	std::vector<char> progress;
-	int target;
-	long long timeLeftToPlayMillis;
-	int wins;
-};
+	struct MiniSeries
+	{
+		int losses;
+		std::vector<char> progress;
+		int target;
+		long long timeLeftToPlayMillis;
+		int wins;
+	};
+}
 
 #endif // MINI_SERIES_HPP

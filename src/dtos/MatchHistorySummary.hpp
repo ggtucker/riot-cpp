@@ -3,19 +3,22 @@
 
 #include <string>
 
-struct MatchHistorySummary
+namespace Riot
 {
-	int assists;
-	long long date;
-	int deaths;
-	long long gameId;
-	std::string gameMode;
-	bool invalid;
-	int kills;
-	int mapId;
-	int opposingTeamKills;
-	std::string opposingTeamName;
-	bool win;
-};
+	struct MatchHistorySummary
+	{
+		int assists;
+		long long date;
+		int deaths;
+		long long gameId;
+		std::string gameMode;
+		bool invalid;
+		int kills;
+		int mapId;
+		int opposingTeamKills;
+		std::string opposingTeamName;
+		bool win;
+	};
+}
 
 #endif // MATCH_HISTORY_SUMMARY_HPP

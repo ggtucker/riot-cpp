@@ -3,10 +3,13 @@
 
 #include "RuneSlotted.hpp"
 
-struct RuneSlot
+namespace Riot
 {
-	RuneSlotted rune;
-	int runeSlotId;
-};
+	struct RuneSlot
+	{
+		RuneSlotted rune;
+		int runeSlotId;
+	};
+}
 
 #endif // RUNE_SLOT_HPP

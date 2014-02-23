@@ -1,10 +1,13 @@
 #ifndef LOCALE_HPP
 #define LOCALE_HPP
 
-enum class Locale
+namespace Riot
 {
-	en_US = 0,
-	es_ES
-};
+	enum class Locale
+	{
+		en_US = 0,
+		es_ES
+	};
+}
 
 #endif // LOCALE_HPP

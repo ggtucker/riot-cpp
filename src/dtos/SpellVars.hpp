@@ -3,11 +3,14 @@
 
 #include <string>
 
-struct SpellVars
+namespace Riot
 {
-	std::string link;
-	double coeff;
-	std::string key;
-};
+	struct SpellVars
+	{
+		std::string link;
+		double coeff;
+		std::string key;
+	};
+}
 
 #endif // SPELL_VARS_HPP

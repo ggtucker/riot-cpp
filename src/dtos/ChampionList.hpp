@@ -3,10 +3,14 @@
 
 #include <vector>
 #include "Champion.hpp"
+#include "../JSONPrinter.hpp"
 
-struct ChampionList
+namespace Riot
 {
-	std::vector<Champion> champions;
-};
+	struct ChampionList
+	{
+		std::vector<Champion> champions;
+	};
+}
 
 #endif // CHAMPION_LIST_HPP

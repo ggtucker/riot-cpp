@@ -6,22 +6,25 @@
 #include "Player.hpp"
 #include "RawStats.hpp"
 
-struct Game
+namespace Riot
 {
-	int championId;
-	long long createDate;
-	std::vector<Player> fellowPlayers;
-	long long gameId;
-	std::string gameMode;
-	std::string gameType;
-	bool invalid;
-	int level;
-	int mapId;
-	int spell1;
-	int spell2;
-	RawStats stats;
-	std::string subType;
-	int teamId;
-};
+	struct Game
+	{
+		int championId;
+		long long createDate;
+		std::vector<Player> fellowPlayers;
+		long long gameId;
+		std::string gameMode;
+		std::string gameType;
+		bool invalid;
+		int level;
+		int mapId;
+		int spell1;
+		int spell2;
+		RawStats stats;
+		std::string subType;
+		int teamId;
+	};
+}
 
 #endif // GAME_HPP

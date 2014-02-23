@@ -4,10 +4,13 @@
 #include <vector>
 #include <string>
 
-struct ItemTree
+namespace Riot
 {
-	std::string header;
-	std::vector<std::string> tags;
-};
+	struct ItemTree
+	{
+		std::string header;
+		std::vector<std::string> tags;
+	};
+}
 
 #endif // ITEM_TREE_HPP

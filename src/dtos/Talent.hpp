@@ -3,11 +3,14 @@
 
 #include <string>
 
-struct Talent
+namespace Riot
 {
-	int id;
-	std::string name;
-	int rank;
-};
+	struct Talent
+	{
+		int id;
+		std::string name;
+		int rank;
+	};
+}
 
 #endif // TALENT_HPP

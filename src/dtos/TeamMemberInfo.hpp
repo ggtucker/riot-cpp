@@ -3,12 +3,15 @@
 
 #include <string>
 
-struct TeamMemberInfo
+namespace Riot
 {
-	long long inviteDate;
-	long long joinDate;
-	long long playerId;
-	std::string status;
-};
+	struct TeamMemberInfo
+	{
+		long long inviteDate;
+		long long joinDate;
+		long long playerId;
+		std::string status;
+	};
+}
 
 #endif // TEAM_MEMBER_INFO_HPP

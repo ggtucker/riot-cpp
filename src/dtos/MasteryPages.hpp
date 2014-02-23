@@ -4,10 +4,13 @@
 #include <vector>
 #include "MasteryPage.hpp"
 
-struct MasteryPages
+namespace Riot
 {
-	std::vector<MasteryPage> pages;
-	long long summonerId;
-};
+	struct MasteryPages
+	{
+		std::vector<MasteryPage> pages;
+		long long summonerId;
+	};
+}
 
 #endif // MASTERY_PAGES_HPP

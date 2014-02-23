@@ -5,13 +5,16 @@
 #include <string>
 #include "LeagueItem.hpp"
 
-struct League
+namespace Riot
 {
-	std::vector<LeagueItem> entries;
-	std::string name;
-	std::string participantId;
-	std::string queue;
-	std::string tier;
-};
+	struct League
+	{
+		std::vector<LeagueItem> entries;
+		std::string name;
+		std::string participantId;
+		std::string queue;
+		std::string tier;
+	};
+}
 
 #endif // LEAGUE_HPP

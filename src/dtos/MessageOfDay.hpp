@@ -3,11 +3,14 @@
 
 #include <string>
 
-struct MessageOfDay
+namespace Riot
 {
-	long long createDate;
-	std::string message;
-	int version;
-};
+	struct MessageOfDay
+	{
+		long long createDate;
+		std::string message;
+		int version;
+	};
+}
 
 #endif // MESSAGE_OF_DAY_HPP

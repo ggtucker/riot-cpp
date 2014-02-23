@@ -4,9 +4,12 @@
 #include <vector>
 #include "MasteryTreeItem.hpp"
 
-struct MasteryTreeList
+namespace Riot
 {
-	std::vector<MasteryTreeItem> masteryTreeItems;
-};
+	struct MasteryTreeList
+	{
+		std::vector<MasteryTreeItem> masteryTreeItems;
+	};
+}
 
 #endif // MASTERY_TREE_LIST_HPP

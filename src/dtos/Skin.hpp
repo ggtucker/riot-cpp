@@ -3,11 +3,14 @@
 
 #include <string>
 
-struct Skin
+namespace Riot
 {
-	std::string id;
-	std::string name;
-	int num;
-};
+	struct Skin
+	{
+		std::string id;
+		std::string name;
+		int num;
+	};
+}
 
 #endif // SKIN_HPP

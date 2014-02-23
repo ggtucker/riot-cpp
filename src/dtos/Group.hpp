@@ -3,10 +3,13 @@
 
 #include <string>
 
-struct Group
+namespace Riot
 {
-	std::string MaxGroupOwnable;
-	std::string id;
-};
+	struct Group
+	{
+		std::string MaxGroupOwnable;
+		std::string id;
+	};
+}
 
 #endif // GROUP_HPP

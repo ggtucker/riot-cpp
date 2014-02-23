@@ -3,13 +3,16 @@
 
 #include "AggregatedStats.hpp"
 
-struct PlayerStatsSummary
+namespace Riot
 {
-	AggregatedStats aggregatedStats;
-	int losses;
-	long long modifyDate;
-	std::string playerStatSummaryType;
-	int wins;
-};
+	struct PlayerStatsSummary
+	{
+		AggregatedStats aggregatedStats;
+		int losses;
+		long long modifyDate;
+		std::string playerStatSummaryType;
+		int wins;
+	};
+}
 
 #endif // PLAYERSTATS__SUMMARY_HPP

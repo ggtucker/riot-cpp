@@ -5,14 +5,17 @@
 #include <string>
 #include "Image.hpp"
 
-struct Mastery
+namespace Riot
 {
-	std::vector<std::string> description;
-	int id;
-	Image image;
-	std::string name;
-	std::string prereq;
-	int ranks;
-};
+	struct Mastery
+	{
+		std::vector<std::string> description;
+		int id;
+		Image image;
+		std::string name;
+		std::string prereq;
+		int ranks;
+	};
+}
 
 #endif // MASTERY_HPP

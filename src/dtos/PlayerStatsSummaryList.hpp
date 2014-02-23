@@ -4,10 +4,13 @@
 #include <vector>
 #include "PlayerStatsSummary.hpp"
 
-struct PlayerStatsSummaryList
+namespace Riot
 {
-	std::vector<PlayerStatsSummary> playerStatSummaries;
-	long long summonerId;
-};
+	struct PlayerStatsSummaryList
+	{
+		std::vector<PlayerStatsSummary> playerStatSummaries;
+		long long summonerId;
+	};
+}
 
 #endif // PLAYERSTATS__SUMMARY_LIST_HPP

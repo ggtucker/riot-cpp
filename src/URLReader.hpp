@@ -4,9 +4,12 @@
 #include <curl/curl.h>
 #include <string>
 
-namespace URLReader
+namespace Riot
 {
-	std::string read(const std::string& url);
+	namespace URLReader
+	{
+		std::string read(const std::string& url);
+	}
 }
 
 #endif // URL_READER_HPP

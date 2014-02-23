@@ -3,10 +3,13 @@
 
 #include <string>
 
-struct MasteryTreeItem
+namespace Riot
 {
-	std::string masteryId;
-	std::string prereq;
-};
+	struct MasteryTreeItem
+	{
+		std::string masteryId;
+		std::string prereq;
+	};
+}
 
 #endif // MASTERY_TREE_ITEM_HPP

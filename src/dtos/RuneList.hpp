@@ -5,12 +5,15 @@
 #include <string>
 #include "BasicData.hpp"
 
-struct RuneList
+namespace Riot
 {
-	BasicData basic;
-	std::map<std::string, Rune> data;
-	std::string type;
-	std::string version;
-};
+	struct RuneList
+	{
+		BasicData basic;
+		std::map<std::string, Rune> data;
+		std::string type;
+		std::string version;
+	};
+}
 
 #endif // RUNE_LIST_HPP

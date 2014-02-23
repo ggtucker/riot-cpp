@@ -4,10 +4,13 @@
 #include <vector>
 #include <string>
 
-struct LevelTip
+namespace Riot
 {
-	std::vector<std::string> effect;
-	std::vector<std::string> label;
-};
+	struct LevelTip
+	{
+		std::vector<std::string> effect;
+		std::vector<std::string> label;
+	};
+}
 
 #endif // LEVEL_TIP_HPP

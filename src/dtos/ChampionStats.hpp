@@ -4,11 +4,14 @@
 #include <string>
 #include "AggregatedStats.hpp"
 
-struct ChampionStats
+namespace Riot
 {
-	int id;
-	std::string name;
-	AggregatedStats stats;
-};
+	struct ChampionStats
+	{
+		int id;
+		std::string name;
+		AggregatedStats stats;
+	};
+}
 
 #endif // CHAMPION_STATS_HPP

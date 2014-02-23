@@ -3,15 +3,18 @@
 
 #include <string>
 
-struct Image
+namespace Riot
 {
-	std::string full;
-	std::string group;
-	int h;
-	std::string sprite;
-	int w;
-	int x;
-	int y;
-};
+	struct Image
+	{
+		std::string full;
+		std::string group;
+		int h;
+		std::string sprite;
+		int w;
+		int x;
+		int y;
+	};
+}
 
 #endif // IMAGE_HPP

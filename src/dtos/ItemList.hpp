@@ -9,14 +9,17 @@
 #include "Group.hpp"
 #include "ItemTree.hpp"
 
-struct ItemList
+namespace Riot
 {
-	BasicData basic;
-	std::map<std::string, Item> data;
-	std::vector<Group> groups;
-	std::vector<ItemTree> tree;
-	std::string type;
-	std::string version;
-};
+	struct ItemList
+	{
+		BasicData basic;
+		std::map<std::string, Item> data;
+		std::vector<Group> groups;
+		std::vector<ItemTree> tree;
+		std::string type;
+		std::string version;
+	};
+}
 
 #endif // ITEM_LIST_HPP

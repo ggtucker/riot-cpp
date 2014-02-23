@@ -4,10 +4,13 @@
 #include <vector>
 #include "TeamMemberInfo.hpp"
 
-struct Roster
+namespace Riot
 {
-	std::vector<TeamMemberInfo> memberList;
-	long long ownerId;
-};
+	struct Roster
+	{
+		std::vector<TeamMemberInfo> memberList;
+		long long ownerId;
+	};
+}
 
 #endif // ROSTER_HPP

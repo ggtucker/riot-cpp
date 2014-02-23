@@ -3,13 +3,16 @@
 
 #include <string>
 
-struct Summoner
+namespace Riot
 {
-	long long id;
-	std::string name;
-	int profileIconId;
-	long long revisionDate;
-	long long summonerLevel;
-};
+	struct Summoner
+	{
+		long long id;
+		std::string name;
+		int profileIconId;
+		long long revisionDate;
+		long long summonerLevel;
+	};
+}
 
 #endif // SUMMONER_HPP

@@ -3,13 +3,16 @@
 
 #include <string>
 
-struct TeamStatDetail
+namespace Riot
 {
-	int averageGamesPlayed;
-	std::string fullId;
-	int losses;
-	std::string teamStatType;
-	int wins;
-};
+	struct TeamStatDetail
+	{
+		int averageGamesPlayed;
+		std::string fullId;
+		int losses;
+		std::string teamStatType;
+		int wins;
+	};
+}
 
 #endif // TEAM_STAT_DETAIL_HPP

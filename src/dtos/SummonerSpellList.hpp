@@ -5,11 +5,14 @@
 #include <string>
 #include "SummonerSpell.hpp"
 
-struct SummonerSpellList
+namespace Riot
 {
-	std::map<std::string, SummonerSpell> data;
-	std::string type;
-	std::string version;
-};
+	struct SummonerSpellList
+	{
+		std::map<std::string, SummonerSpell> data;
+		std::string type;
+		std::string version;
+	};
+}
 
 #endif // SUMMONER_SPELL_LIST_HPP

@@ -4,10 +4,13 @@
 #include <vector>
 #include "Game.hpp"
 
-struct RecentGames
+namespace Riot
 {
-	std::vector<Game> games;
-	long long summonerId;
-};
+	struct RecentGames
+	{
+		std::vector<Game> games;
+		long long summonerId;
+	};
+}
 
 #endif // RECENT_GAMES_HPP

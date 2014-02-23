@@ -4,11 +4,14 @@
 #include <string>
 #include "Image.hpp"
 
-struct Passive
+namespace Riot
 {
-	std::string description;
-	Image image;
-	std::string name;
-};
+	struct Passive
+	{
+		std::string description;
+		Image image;
+		std::string name;
+	};
+}
 
 #endif // PASSIVE_HPP

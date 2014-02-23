@@ -3,12 +3,15 @@
 
 #include <string>
 
-struct RuneSlotted
+namespace Riot
 {
-	std::string description;
-	int id;
-	std::string name;
-	int tier;
-};
+	struct RuneSlotted
+	{
+		std::string description;
+		int id;
+		std::string name;
+		int tier;
+	};
+}
 
 #endif // RUNE_SLOTTED_HPP

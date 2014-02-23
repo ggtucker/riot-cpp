@@ -3,10 +3,13 @@
 
 #include <string>
 
-struct BlockItem
+namespace Riot
 {
-	int count;
-	std::string id;
-};
+	struct BlockItem
+	{
+		int count;
+		std::string id;
+	};
+}
 
 #endif // BLOCK_ITEM_HPP

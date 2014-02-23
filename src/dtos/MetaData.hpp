@@ -3,11 +3,14 @@
 
 #include <string>
 
-struct MetaData
+namespace Riot
 {
-	bool isRune;
-	std::string tier;
-	std::string type;
-};
+	struct MetaData
+	{
+		bool isRune;
+		std::string tier;
+		std::string type;
+	};
+}
 
 #endif // META_DATA_HPP
