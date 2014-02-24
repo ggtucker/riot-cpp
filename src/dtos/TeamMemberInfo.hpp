@@ -2,16 +2,15 @@
 #define TEAM_MEMBER_INFO_HPP
 
 #include <string>
-#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct TeamMemberInfo
 	{
-		DTOField<long long> inviteDate;
-		DTOField<long long> joinDate;
-		DTOField<long long> playerId;
-		DTOField<std::string> status;
+		long long inviteDate;
+		long long joinDate;
+		long long playerId;
+		std::string status;
 	};
 }
 

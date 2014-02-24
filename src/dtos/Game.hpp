@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <string>
-#include "DTOField.hpp"
 #include "Player.hpp"
 #include "RawStats.hpp"
 
@@ -11,20 +10,20 @@ namespace Riot
 {
 	struct Game
 	{
-		DTOField<int> championId;
-		DTOField<long long> createDate;
-		DTOField<std::vector<Player>> fellowPlayers;
-		DTOField<long long> gameId;
-		DTOField<std::string> gameMode;
-		DTOField<std::string> gameType;
-		DTOField<bool> invalid;
-		DTOField<int> level;
-		DTOField<int> mapId;
-		DTOField<int> spell1;
-		DTOField<int> spell2;
-		DTOField<RawStats> stats;
-		DTOField<std::string> subType;
-		DTOField<int> teamId;
+		int championId;
+		long long createDate;
+		std::vector<Player> fellowPlayers;
+		long long gameId;
+		std::string gameMode;
+		std::string gameType;
+		bool invalid;
+		int level;
+		int mapId;
+		int spell1;
+		int spell2;
+		RawStats stats;
+		std::string subType;
+		int teamId;
 	};
 }
 

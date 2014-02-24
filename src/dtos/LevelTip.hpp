@@ -3,14 +3,13 @@
 
 #include <vector>
 #include <string>
-#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct LevelTip
 	{
-		DTOField<std::vector<std::string>> effect;
-		DTOField<std::vector<std::string>> label;
+		std::vector<std::string> effect;
+		std::vector<std::string> label;
 	};
 }
 

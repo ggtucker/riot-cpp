@@ -2,14 +2,13 @@
 #define CHAMPION_LIST_HPP
 
 #include <vector>
-#include "DTOField.hpp"
 #include "Champion.hpp"
 
 namespace Riot
 {
 	struct ChampionList
 	{
-		DTOField<std::vector<Champion>> champions;
+		std::vector<Champion> champions;
 	};
 }
 

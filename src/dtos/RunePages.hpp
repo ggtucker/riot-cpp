@@ -2,15 +2,14 @@
 #define RUNE_PAGES_HPP
 
 #include <vector>
-#include "DTOField.hpp"
 #include "RunePage.hpp"
 
 namespace Riot
 {
 	struct RunePages
 	{
-		DTOField<std::vector<RunePage>> pages;
-		DTOField<long long> summonerId;
+		std::vector<RunePage> pages;
+		long long summonerId;
 	};
 }
 

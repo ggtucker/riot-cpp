@@ -32,89 +32,97 @@ namespace Riot
 	{
 		// ----------The glorious wall of print functions---------- //
 
-			void printAggregatedStats(const DTOField<AggregatedStats>& dto, std::string indent="");
-			void printBasicData(const DTOField<BasicData>& dto, std::string indent="");
-			void printBasicDataStats(const DTOField<BasicDataStats>& dto, std::string indent="");
-			void printBlock(const DTOField<Block>& dto, std::string indent="");
-			void printBlockItem(const DTOField<BlockItem>& dto, std::string indent="");
-			void printChampion(const DTOField<Champion>& dto, std::string indent="");
-			void printChampionData(const DTOField<ChampionData>& dto, std::string indent="");
-			void printChampionDataList(const DTOField<ChampionDataList>& dto, std::string indent="");
-			void printChampionList(const DTOField<ChampionList>& dto, std::string indent="");
-			void printChampionSpell(const DTOField<ChampionSpell>& dto, std::string indent="");
-			void printChampionStats(const DTOField<ChampionStats>& dto, std::string indent="");
-			void printGame(const DTOField<Game>& dto, std::string indent="");
-			void printGold(const DTOField<Gold>& dto, std::string indent="");
-			void printGroup(const DTOField<Group>& dto, std::string indent="");
-			void printImage(const DTOField<Image>& dto, std::string indent="");
-			void printInfo(const DTOField<Info>& dto, std::string indent="");
-			void printItem(const DTOField<Item>& dto, std::string indent="");
-			void printItemList(const DTOField<ItemList>& dto, std::string indent="");
-			void printItemTree(const DTOField<ItemTree>& dto, std::string indent="");
-			void printLeague(const DTOField<League>& dto, std::string indent="");
-			void printLeagueItem(const DTOField<LeagueItem>& dto, std::string indent="");
-			void printLevelTip(const DTOField<LevelTip>& dto, std::string indent="");
-			void printMastery(const DTOField<Mastery>& dto, std::string indent="");
-			void printMasteryList(const DTOField<MasteryList>& dto, std::string indent="");
-			void printMasteryPage(const DTOField<MasteryPage>& dto, std::string indent="");
-			void printMasteryPages(const DTOField<MasteryPages>& dto, std::string indent="");
-			void printMasteryTree(const DTOField<MasteryTree>& dto, std::string indent="");
-			void printMasteryTreeItem(const DTOField<MasteryTreeItem>& dto, std::string indent="");
-			void printMasteryTreeList(const DTOField<MasteryTreeList>& dto, std::string indent="");
-			void printMatchHistorySummary(const DTOField<MatchHistorySummary>& dto, std::string indent="");
-			void printMessageOfDay(const DTOField<MessageOfDay>& dto, std::string indent="");
-			void printMetaData(const DTOField<MetaData>& dto, std::string indent="");
-			void printMiniSeries(const DTOField<MiniSeries>& dto, std::string indent="");
-			void printPassive(const DTOField<Passive>& dto, std::string indent="");
-			void printPlayer(const DTOField<Player>& dto, std::string indent="");
-			void printPlayerStatsSummary(const DTOField<PlayerStatsSummary>& dto, std::string indent="");
-			void printPlayerStatsSummaryList(const DTOField<PlayerStatsSummaryList>& dto, std::string indent="");
-			void printRankedStats(const DTOField<RankedStats>& dto, std::string indent="");
-			void printRawStats(const DTOField<RawStats>& dto, std::string indent="");
-			void printRealm(const DTOField<Realm>& dto, std::string indent="");
-			void printRecentGames(const DTOField<RecentGames>& dto, std::string indent="");
-			void printRecommended(const DTOField<Recommended>& dto, std::string indent="");
-			void printRoster(const DTOField<Roster>& dto, std::string indent="");
-			void printRune(const DTOField<Rune>& dto, std::string indent="");
-			void printRuneList(const DTOField<RuneList>& dto, std::string indent="");
-			void printRunePage(const DTOField<RunePage>& dto, std::string indent="");
-			void printRunePages(const DTOField<RunePages>& dto, std::string indent="");
-			void printRuneSlot(const DTOField<RuneSlot>& dto, std::string indent="");
-			void printRuneSlotted(const DTOField<RuneSlotted>& dto, std::string indent="");
-			void printSkin(const DTOField<Skin>& dto, std::string indent="");
-			void printSpellVars(const DTOField<SpellVars>& dto, std::string indent="");
-			void printStats(const DTOField<Stats>& dto, std::string indent="");
-			void printSummoner(const DTOField<Summoner>& dto, std::string indent="");
-			void printSummonerSpell(const DTOField<SummonerSpell>& dto, std::string indent="");
-			void printSummonerSpellList(const DTOField<SummonerSpellList>& dto, std::string indent="");
-			void printTalent(const DTOField<Talent>& dto, std::string indent="");
-			void printTeam(const DTOField<Team>& dto, std::string indent="");
-			void printTeamMemberInfo(const DTOField<TeamMemberInfo>& dto, std::string indent="");
-			void printTeamStatDetail(const DTOField<TeamStatDetail>& dto, std::string indent="");
-			void printTeamStatSummary(const DTOField<TeamStatSummary>& dto, std::string indent="");
+			void printAggregatedStats(const AggregatedStats& data, std::string indent="");
+			void printBasicData(const BasicData& data, std::string indent="");
+			void printBasicDataStats(const BasicDataStats& data, std::string indent="");
+			void printBlock(const Block& data, std::string indent="");
+			void printBlockItem(const BlockItem& data, std::string indent="");
+			void printChampion(const Champion& data, std::string indent="");
+			void printChampionData(const ChampionData& data, std::string indent="");
+			void printChampionDataList(const ChampionDataList& data, std::string indent="");
+			void printChampionList(const ChampionList& data, std::string indent="");
+			void printChampionSpell(const ChampionSpell& data, std::string indent="");
+			void printChampionStats(const ChampionStats& data, std::string indent="");
+			void printGame(const Game& data, std::string indent="");
+			void printGold(const Gold& data, std::string indent="");
+			void printGroup(const Group& data, std::string indent="");
+			void printImage(const Image& data, std::string indent="");
+			void printInfo(const Info& data, std::string indent="");
+			void printItem(const Item& data, std::string indent="");
+			void printItemList(const ItemList& data, std::string indent="");
+			void printItemTree(const ItemTree& data, std::string indent="");
+			void printLeague(const League& data, std::string indent="");
+			void printLeagueItem(const LeagueItem& data, std::string indent="");
+			void printLevelTip(const LevelTip& data, std::string indent="");
+			void printMastery(const Mastery& data, std::string indent="");
+			void printMasteryList(const MasteryList& data, std::string indent="");
+			void printMasteryPage(const MasteryPage& data, std::string indent="");
+			void printMasteryPages(const MasteryPages& data, std::string indent="");
+			void printMasteryTree(const MasteryTree& data, std::string indent="");
+			void printMasteryTreeItem(const MasteryTreeItem& data, std::string indent="");
+			void printMasteryTreeList(const MasteryTreeList& data, std::string indent="");
+			void printMatchHistorySummary(const MatchHistorySummary& data, std::string indent="");
+			void printMessageOfDay(const MessageOfDay& data, std::string indent="");
+			void printMetaData(const MetaData& data, std::string indent="");
+			void printMiniSeries(const MiniSeries& data, std::string indent="");
+			void printPassive(const Passive& data, std::string indent="");
+			void printPlayer(const Player& data, std::string indent="");
+			void printPlayerStatsSummary(const PlayerStatsSummary& data, std::string indent="");
+			void printPlayerStatsSummaryList(const PlayerStatsSummaryList& data, std::string indent="");
+			void printRankedStats(const RankedStats& data, std::string indent="");
+			void printRawStats(const RawStats& data, std::string indent="");
+			void printRealm(const Realm& data, std::string indent="");
+			void printRecentGames(const RecentGames& data, std::string indent="");
+			void printRecommended(const Recommended& data, std::string indent="");
+			void printRoster(const Roster& data, std::string indent="");
+			void printRune(const Rune& data, std::string indent="");
+			void printRuneList(const RuneList& data, std::string indent="");
+			void printRunePage(const RunePage& data, std::string indent="");
+			void printRunePages(const RunePages& data, std::string indent="");
+			void printRuneSlot(const RuneSlot& data, std::string indent="");
+			void printRuneSlotted(const RuneSlotted& data, std::string indent="");
+			void printSkin(const Skin& data, std::string indent="");
+			void printSpellVars(const SpellVars& data, std::string indent="");
+			void printStats(const Stats& data, std::string indent="");
+			void printSummoner(const Summoner& data, std::string indent="");
+			void printSummonerSpell(const SummonerSpell& data, std::string indent="");
+			void printSummonerSpellList(const SummonerSpellList& data, std::string indent="");
+			void printTalent(const Talent& data, std::string indent="");
+			void printTeam(const Team& data, std::string indent="");
+			void printTeamMemberInfo(const TeamMemberInfo& data, std::string indent="");
+			void printTeamStatDetail(const TeamStatDetail& data, std::string indent="");
+			void printTeamStatSummary(const TeamStatSummary& data, std::string indent="");
 
 		// ----------The less glorious wall of helper functions---------- //
 
 			template<typename T>
-			void printDTOVector(std::string label, const DTOField<std::vector<T>>& vectorField)
+			void printVector(std::string label, const std::vector<T>& vector)
 			{
-				if(vectorField.isValid())
+				std::cout << label << "[";
+				for(unsigned i = 0; i < vector.size(); i++)
 				{
-					const std::vector<T>& vector = vectorField.data();
-					std::cout << label << "[";
-					for(unsigned i = 0; i < vector.size(); i++)
-					{
-						std::cout << vector[i];
+					std::cout << vector[i];
 
-						if(i != vector.size()-1)
-							std::cout << ",";
-					}
-					std::cout << "]" << std::endl;
+					if(i != vector.size()-1)
+						std::cout << ",";
 				}
+				std::cout << "]" << std::endl;
 			}
 
-			void printDTOMap(std::string label, const DTOField<std::map<std::string, bool>>& mapField);
-			void printDTOMap(std::string label, const DTOField<std::map<std::string, std::string>>& mapField);
+			template<typename T>
+			void print2DVector(std::string indent, std::string indentIncrement, std::string label, const std::vector<std::vector<T>>& vector)
+			{
+				std::cout << indent << label << std::endl;
+				std::cout << indent << "[" << std::endl;
+				for(unsigned i = 0; i < vector.size(); i++)
+				{
+					printVector<T>(indent + indentIncrement, vector[i]);
+				}
+				std::cout << indent << "]" << std::endl;
+			}
+
+			void printMap(std::string label, const std::map<std::string, bool>& map);
+			void printMap(std::string label, const std::map<std::string, std::string>& map);
 	}
 }
 

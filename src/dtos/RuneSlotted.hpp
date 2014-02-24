@@ -2,16 +2,15 @@
 #define RUNE_SLOTTED_HPP
 
 #include <string>
-#include "DTOField.hpp"
 
 namespace Riot
 {
 	struct RuneSlotted
 	{
-		DTOField<std::string> description;
-		DTOField<int> id;
-		DTOField<std::string> name;
-		DTOField<int> tier;
+		std::string description;
+		int id;
+		std::string name;
+		int tier;
 	};
 }
 

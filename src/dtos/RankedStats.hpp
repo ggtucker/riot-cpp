@@ -2,16 +2,15 @@
 #define RANKED_STATS_HPP
 
 #include <vector>
-#include "DTOField.hpp"
 #include "ChampionStats.hpp"
 
 namespace Riot
 {
 	struct RankedStats
 	{
-		DTOField<std::vector<ChampionStats>> champions;
-		DTOField<long long> modifyDate;
-		DTOField<long long> summonerId;
+		std::vector<ChampionStats> champions;
+		long long modifyDate;
+		long long summonerId;
 	};
 }
 

@@ -199,18 +199,18 @@ namespace Riot
 		ChampionList parseChampionList(const Value& json)
 		{
 			ChampionList championList;
-			std::vector<Champion> champions;
 
 			if(json.HasMember("champions"))
 			{
+				std::vector<Champion> champions;
 				const Value& championListDto = json["champions"];
 				for (SizeType i = 0; i < championListDto.Size(); i++)
 				{
 					champions.push_back(parseChampion(championListDto[i]));
 				}
+				championList.champions = champions;
 			}
 
-			championList.champions = champions;
 			return championList;
 		}
 
@@ -231,6 +231,44 @@ namespace Riot
 		Game parseGame(const Value& json)
 		{
 			Game game;
+
+			if(json.HasMember("championId"))
+				game.championId = json["championId"].GetInt();
+			if(json.HasMember("createDate"))
+				game.createDate = json["createDate"].GetInt64();
+			if(json.HasMember("gameId"))
+				game.gameId = json["gameId"].GetInt64();
+			if(json.HasMember("gameMode"))
+				game.gameMode = json["gameMode"].GetString();
+			if(json.HasMember("gameType"))
+				game.gameType = json["gameType"].GetString();
+			if(json.HasMember("invalid"))
+				game.invalid = json["invalid"].GetBool();
+			if(json.HasMember("level"))
+				game.level = json["level"].GetInt();
+			if(json.HasMember("mapId"))
+				game.mapId = json["mapId"].GetInt();
+			if(json.HasMember("spell1"))
+				game.spell1 = json["spell1"].GetInt();
+			if(json.HasMember("spell2"))
+				game.spell2 = json["spell2"].GetInt();
+			if(json.HasMember("stats"))
+				game.stats = parseRawStats(json["stats"]);
+			if(json.HasMember("subType"))
+				game.subType = json["subType"].GetString();
+			if(json.HasMember("teamId"))
+				game.teamId = json["teamId"].GetInt();
+
+			if(json.HasMember("fellowPlayers"))
+			{
+				std::vector<Player> fellowPlayers;
+				const Value& playerListDto = json["fellowPlayers"];
+				for (SizeType i = 0; i < playerListDto.Size(); i++)
+				{
+					fellowPlayers.push_back(parsePlayer(playerListDto[i]));
+				}
+				game.fellowPlayers = fellowPlayers;
+			}
 
 			return game;
 		}
@@ -288,6 +326,26 @@ namespace Riot
 		{
 			League league;
 
+			if(json.HasMember("name"))
+				league.name = json["name"].GetString();
+			if(json.HasMember("participantId"))
+				league.participantId = json["participantId"].GetString();
+			if(json.HasMember("queue"))
+				league.queue = json["queue"].GetString();
+			if(json.HasMember("tier"))
+				league.tier = json["tier"].GetString();
+
+			if(json.HasMember("entries"))
+			{
+				std::vector<LeagueItem> entries;
+				const Value& playerListDto = json["entries"];
+				for (SizeType i = 0; i < playerListDto.Size(); i++)
+				{
+					entries.push_back(parseLeagueItem(playerListDto[i]));
+				}
+				league.entries = entries;
+			}
+
 			return league;
 		}
 
@@ -301,6 +359,35 @@ namespace Riot
 		LeagueItem parseLeagueItem(const Value& json)
 		{
 			LeagueItem leagueItem;
+
+			if(json.HasMember("isFreshBlood"))
+				leagueItem.isFreshBlood = json["isFreshBlood"].GetBool();
+			if(json.HasMember("isHotStreak"))
+				leagueItem.isHotStreak = json["isHotStreak"].GetBool();
+			if(json.HasMember("isInactive"))
+				leagueItem.isInactive = json["isInactive"].GetBool();
+			if(json.HasMember("isVeteran"))
+				leagueItem.isVeteran = json["isVeteran"].GetBool();
+			if(json.HasMember("lastPlayed"))
+				leagueItem.lastPlayed = json["lastPlayed"].GetInt64();
+			if(json.HasMember("leagueName"))
+				leagueItem.leagueName = json["leagueName"].GetString();
+			if(json.HasMember("leaguePoints"))
+				leagueItem.leaguePoints = json["leaguePoints"].GetInt();
+			if(json.HasMember("miniSeries"))
+				leagueItem.miniSeries = parseMiniSeries(json["miniSeries"]);
+			if(json.HasMember("playerOrTeamId"))
+				leagueItem.playerOrTeamId = json["playerOrTeamId"].GetString();
+			if(json.HasMember("playerOrTeamName"))
+				leagueItem.playerOrTeamName = json["playerOrTeamName"].GetString();
+			if(json.HasMember("queueType"))
+				leagueItem.queueType = json["queueType"].GetString();
+			if(json.HasMember("rank"))
+				leagueItem.rank = json["rank"].GetString();
+			if(json.HasMember("tier"))
+				leagueItem.tier = json["tier"].GetString();
+			if(json.HasMember("wins"))
+				leagueItem.wins = json["wins"].GetInt();
 
 			return leagueItem;
 		}
@@ -399,6 +486,26 @@ namespace Riot
 		MiniSeries parseMiniSeries(const Value& json)
 		{
 			MiniSeries miniSeries;
+			
+			if(json.HasMember("losses"))
+				miniSeries.losses = json["losses"].GetInt();
+			if(json.HasMember("target"))
+				miniSeries.target = json["target"].GetInt();
+			if(json.HasMember("timeLeftToPlayMillis"))
+				miniSeries.timeLeftToPlayMillis = json["timeLeftToPlayMillis"].GetInt64();
+			if(json.HasMember("wins"))
+				miniSeries.wins = json["wins"].GetInt();
+
+			if(json.HasMember("progress"))
+			{
+				std::vector<char> progress;
+				const Value& progressDto = json["progress"];
+				for (SizeType i = 0; i < progressDto.Size(); i++)
+				{
+					progress.push_back(progressDto[i].GetString()[0]);
+				}
+				miniSeries.progress = progress;
+			}
 
 			return miniSeries;
 		}
@@ -413,6 +520,13 @@ namespace Riot
 		Player parsePlayer(const Value& json)
 		{
 			Player player;
+
+			if(json.HasMember("championId"))
+				player.championId = json["championId"].GetInt();
+			if(json.HasMember("summonerId"))
+				player.summonerId = json["summonerId"].GetInt64();
+			if(json.HasMember("teamId"))
+				player.teamId = json["teamId"].GetInt();
 
 			return player;
 		}
@@ -442,6 +556,159 @@ namespace Riot
 		{
 			RawStats rawStats;
 
+			if(json.HasMember("assists"))
+				rawStats.assists = json["assists"].GetInt();
+			if(json.HasMember("barracksKilled"))
+				rawStats.barracksKilled = json["barracksKilled"].GetInt();
+			if(json.HasMember("championsKilled"))
+				rawStats.championsKilled = json["championsKilled"].GetInt();
+			if(json.HasMember("combatPlayerScore"))
+				rawStats.combatPlayerScore = json["combatPlayerScore"].GetInt();
+			if(json.HasMember("consumablesPurchased"))
+				rawStats.consumablesPurchased = json["consumablesPurchased"].GetInt();
+			if(json.HasMember("damageDealtPlayer"))
+				rawStats.damageDealtPlayer = json["damageDealtPlayer"].GetInt();
+			if(json.HasMember("doubleKills"))
+				rawStats.doubleKills = json["doubleKills"].GetInt();
+			if(json.HasMember("firstBlood"))
+				rawStats.firstBlood = json["firstBlood"].GetInt();
+			if(json.HasMember("gold"))
+				rawStats.gold = json["gold"].GetInt();
+			if(json.HasMember("goldEarned"))
+				rawStats.goldEarned = json["goldEarned"].GetInt();
+			if(json.HasMember("goldSpent"))
+				rawStats.goldSpent = json["goldSpent"].GetInt();
+			if(json.HasMember("item0"))
+				rawStats.item0 = json["item0"].GetInt();
+			if(json.HasMember("item1"))
+				rawStats.item1 = json["item1"].GetInt();
+			if(json.HasMember("item2"))
+				rawStats.item2 = json["item2"].GetInt();
+			if(json.HasMember("item3"))
+				rawStats.item3 = json["item3"].GetInt();
+			if(json.HasMember("item4"))
+				rawStats.item4 = json["item4"].GetInt();
+			if(json.HasMember("item5"))
+				rawStats.item5 = json["item5"].GetInt();
+			if(json.HasMember("item6"))
+				rawStats.item6 = json["item6"].GetInt();
+			if(json.HasMember("itemsPurchased"))
+				rawStats.itemsPurchased = json["itemsPurchased"].GetInt();
+			if(json.HasMember("killingSprees"))
+				rawStats.killingSprees = json["killingSprees"].GetInt();
+			if(json.HasMember("largestCriticalStrike"))
+				rawStats.largestCriticalStrike = json["largestCriticalStrike"].GetInt();
+			if(json.HasMember("largestKillingSpree"))
+				rawStats.largestKillingSpree = json["largestKillingSpree"].GetInt();
+			if(json.HasMember("largestMultiKill"))
+				rawStats.largestMultiKill = json["largestMultiKill"].GetInt();
+			if(json.HasMember("legendaryItemsCreated"))
+				rawStats.legendaryItemsCreated = json["legendaryItemsCreated"].GetInt();
+			if(json.HasMember("level"))
+				rawStats.level = json["level"].GetInt();
+			if(json.HasMember("magicDamageDealtPlayer"))
+				rawStats.magicDamageDealtPlayer = json["magicDamageDealtPlayer"].GetInt();
+			if(json.HasMember("magicDamageDealtToChampions"))
+				rawStats.magicDamageDealtToChampions = json["magicDamageDealtToChampions"].GetInt();
+			if(json.HasMember("magicDamageTaken"))
+				rawStats.magicDamageTaken = json["magicDamageTaken"].GetInt();
+			if(json.HasMember("minionsDenied"))
+				rawStats.minionsDenied = json["minionsDenied"].GetInt();
+			if(json.HasMember("minionsKilled"))
+				rawStats.minionsKilled = json["minionsKilled"].GetInt();
+			if(json.HasMember("neutralMinionsKilled"))
+				rawStats.neutralMinionsKilled = json["neutralMinionsKilled"].GetInt();
+			if(json.HasMember("neutralMinionsKilledEnemyJungle"))
+				rawStats.neutralMinionsKilledEnemyJungle = json["neutralMinionsKilledEnemyJungle"].GetInt();
+			if(json.HasMember("neutralMinionsKilledYourJungle"))
+				rawStats.neutralMinionsKilledYourJungle = json["neutralMinionsKilledYourJungle"].GetInt();
+			if(json.HasMember("nexusKilled"))
+				rawStats.nexusKilled = json["nexusKilled"].GetBool();
+			if(json.HasMember("nodeCapture"))
+				rawStats.nodeCapture = json["nodeCapture"].GetInt();
+			if(json.HasMember("nodeCaptureAssist"))
+				rawStats.nodeCaptureAssist = json["nodeCaptureAssist"].GetInt();
+			if(json.HasMember("nodeNeutralize"))
+				rawStats.nodeNeutralize = json["nodeNeutralize"].GetInt();
+			if(json.HasMember("nodeNeutralizeAssist"))
+				rawStats.nodeNeutralizeAssist = json["nodeNeutralizeAssist"].GetInt();
+			if(json.HasMember("numDeaths"))
+				rawStats.numDeaths = json["numDeaths"].GetInt();
+			if(json.HasMember("numItemsBought"))
+				rawStats.numItemsBought = json["numItemsBought"].GetInt();
+			if(json.HasMember("objectivePlayerScore"))
+				rawStats.objectivePlayerScore = json["objectivePlayerScore"].GetInt();
+			if(json.HasMember("pentaKills"))
+				rawStats.pentaKills = json["pentaKills"].GetInt();
+			if(json.HasMember("physicalDamageDealtPlayer"))
+				rawStats.physicalDamageDealtPlayer = json["physicalDamageDealtPlayer"].GetInt();
+			if(json.HasMember("physicalDamageDealtToChampions"))
+				rawStats.physicalDamageDealtToChampions = json["physicalDamageDealtToChampions"].GetInt();
+			if(json.HasMember("physicalDamageTaken"))
+				rawStats.physicalDamageTaken = json["physicalDamageTaken"].GetInt();
+			if(json.HasMember("quadraKills"))
+				rawStats.quadraKills = json["quadraKills"].GetInt();
+			if(json.HasMember("sightWardsBought"))
+				rawStats.sightWardsBought = json["sightWardsBought"].GetInt();
+			if(json.HasMember("spell1Cast"))
+				rawStats.spell1Cast = json["spell1Cast"].GetInt();
+			if(json.HasMember("spell2Cast"))
+				rawStats.spell2Cast = json["spell2Cast"].GetInt();
+			if(json.HasMember("spell3Cast"))
+				rawStats.spell3Cast = json["spell3Cast"].GetInt();
+			if(json.HasMember("spell4Cast"))
+				rawStats.spell4Cast = json["spell4Cast"].GetInt();
+			if(json.HasMember("summonSpell1Cast"))
+				rawStats.summonSpell1Cast = json["summonSpell1Cast"].GetInt();
+			if(json.HasMember("summonSpell2Cast"))
+				rawStats.summonSpell2Cast = json["summonSpell2Cast"].GetInt();
+			if(json.HasMember("superMonsterKilled"))
+				rawStats.superMonsterKilled = json["superMonsterKilled"].GetInt();
+			if(json.HasMember("team"))
+				rawStats.team = json["team"].GetInt();
+			if(json.HasMember("teamObjective"))
+				rawStats.teamObjective = json["teamObjective"].GetInt();
+			if(json.HasMember("timePlayed"))
+				rawStats.timePlayed = json["timePlayed"].GetInt();
+			if(json.HasMember("totalDamageDealt"))
+				rawStats.totalDamageDealt = json["totalDamageDealt"].GetInt();
+			if(json.HasMember("totalDamageDealtToChampions"))
+				rawStats.totalDamageDealtToChampions = json["totalDamageDealtToChampions"].GetInt();
+			if(json.HasMember("totalDamageTaken"))
+				rawStats.totalDamageTaken = json["totalDamageTaken"].GetInt();
+			if(json.HasMember("totalHeal"))
+				rawStats.totalHeal = json["totalHeal"].GetInt();
+			if(json.HasMember("totalPlayerScore"))
+				rawStats.totalPlayerScore = json["totalPlayerScore"].GetInt();
+			if(json.HasMember("totalScoreRank"))
+				rawStats.totalScoreRank = json["totalScoreRank"].GetInt();
+			if(json.HasMember("totalTimeCrowdControlDealt"))
+				rawStats.totalTimeCrowdControlDealt = json["totalTimeCrowdControlDealt"].GetInt();
+			if(json.HasMember("totalUnitsHealed"))
+				rawStats.totalUnitsHealed = json["totalUnitsHealed"].GetInt();
+			if(json.HasMember("tripleKills"))
+				rawStats.tripleKills = json["tripleKills"].GetInt();
+			if(json.HasMember("trueDamageDealtPlayer"))
+				rawStats.trueDamageDealtPlayer = json["trueDamageDealtPlayer"].GetInt();
+			if(json.HasMember("trueDamageDealtToChampions"))
+				rawStats.trueDamageDealtToChampions = json["trueDamageDealtToChampions"].GetInt();
+			if(json.HasMember("trueDamageTaken"))
+				rawStats.trueDamageTaken = json["trueDamageTaken"].GetInt();
+			if(json.HasMember("turretsKilled"))
+				rawStats.turretsKilled = json["turretsKilled"].GetInt();
+			if(json.HasMember("unrealKills"))
+				rawStats.unrealKills = json["unrealKills"].GetInt();
+			if(json.HasMember("victoryPointTotal"))
+				rawStats.victoryPointTotal = json["victoryPointTotal"].GetInt();
+			if(json.HasMember("visionWardsBought"))
+				rawStats.visionWardsBought = json["visionWardsBought"].GetInt();
+			if(json.HasMember("wardKilled"))
+				rawStats.wardKilled = json["wardKilled"].GetInt();
+			if(json.HasMember("wardPlaced"))
+				rawStats.wardPlaced = json["wardPlaced"].GetInt();
+			if(json.HasMember("win"))
+				rawStats.win = json["win"].GetBool();
+
 			return rawStats;
 		}
 
@@ -455,6 +722,20 @@ namespace Riot
 		RecentGames parseRecentGames(const Value& json)
 		{
 			RecentGames recentGames;
+
+			if(json.HasMember("summonerId"))
+				recentGames.summonerId = json["summonerId"].GetInt64();
+
+			if(json.HasMember("games"))
+			{
+				std::vector<Game> games;
+				const Value& gameListDto = json["games"];
+				for (SizeType i = 0; i < gameListDto.Size(); i++)
+				{
+					games.push_back(parseGame(gameListDto[i]));
+				}
+				recentGames.games = games;
+			}
 
 			return recentGames;
 		}

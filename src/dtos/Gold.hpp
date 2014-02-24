@@ -1,16 +1,14 @@
 #ifndef GOLD_HPP
 #define GOLD_HPP
 
-#include "DTOField.hpp"
-
 namespace Riot
 {
 	struct Gold
 	{
-		DTOField<int> base;
-		DTOField<bool> purchasable;
-		DTOField<int> sell;
-		DTOField<int> total;
+		int base;
+		bool purchasable;
+		int sell;
+		int total;
 	};
 }
 

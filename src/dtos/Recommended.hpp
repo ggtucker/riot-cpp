@@ -3,20 +3,19 @@
 
 #include <vector>
 #include <string>
-#include "DTOField.hpp"
 #include "Block.hpp"
 
 namespace Riot
 {
 	struct Recommended
 	{
-		DTOField<std::vector<Block>> blocks;
-		DTOField<std::string> champion;
-		DTOField<std::string> map;
-		DTOField<std::string> mode;
-		DTOField<bool> priority;
-		DTOField<std::string> title;
-		DTOField<std::string> type;
+		std::vector<Block> blocks;
+		std::string champion;
+		std::string map;
+		std::string mode;
+		bool priority;
+		std::string title;
+		std::string type;
 	};
 }
 

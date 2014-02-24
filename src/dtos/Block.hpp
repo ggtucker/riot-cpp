@@ -3,15 +3,14 @@
 
 #include <vector>
 #include <string>
-#include "DTOField.hpp"
 #include "BlockItem.hpp"
 
 namespace Riot
 {
 	struct Block
 	{
-		DTOField<std::vector<BlockItem>> items;
-		DTOField<std::string> type;
+		std::vector<BlockItem> items;
+		std::string type;
 	};
 }
 

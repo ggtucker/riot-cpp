@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <string>
-#include "DTOField.hpp"
 #include "Image.hpp"
 #include "LevelTip.hpp"
 #include "SpellVars.hpp"
@@ -12,27 +11,27 @@ namespace Riot
 {
 	struct SummonerSpell
 	{
-		DTOField<std::vector<int>> cooldown;
-		DTOField<std::string> cooldownBurn;
-		DTOField<std::vector<int>> cost;
-		DTOField<std::string> costBurn;
-		DTOField<std::string> costType;
-		DTOField<std::string> description;
-		DTOField<std::vector<std::vector<int>>> effect;
-		DTOField<std::vector<std::string>> effectBurn;
-		DTOField<std::string> id;
-		DTOField<Image> image;
-		DTOField<std::string> key;
-		DTOField<LevelTip> leveltip;
-		DTOField<int> maxrank;
-		DTOField<std::vector<std::string>> modes;
-		DTOField<std::string> name;
-		DTOField<std::vector<int>> range;
-		DTOField<std::string> rangeBurn;
-		DTOField<std::string> resource;
-		DTOField<int> summonerLevel;
-		DTOField<std::string> tooltip;
-		DTOField<std::vector<SpellVars>> vars;
+		std::vector<int> cooldown;
+		std::string cooldownBurn;
+		std::vector<int> cost;
+		std::string costBurn;
+		std::string costType;
+		std::string description;
+		std::vector<std::vector<int>> effect;
+		std::vector<std::string> effectBurn;
+		std::string id;
+		Image image;
+		std::string key;
+		LevelTip leveltip;
+		int maxrank;
+		std::vector<std::string> modes;
+		std::string name;
+		std::vector<int> range;
+		std::string rangeBurn;
+		std::string resource;
+		int summonerLevel;
+		std::string tooltip;
+		std::vector<SpellVars> vars;
 	};
 }
 
