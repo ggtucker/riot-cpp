@@ -29,7 +29,7 @@ namespace Riot
 	extern Region region;       // Region::NA
 	extern Locale locale;       // Locale::en_US
 
-	// ----------API Resource: game-v1.3---------- //
+	// ----------API Resource: champion-v1.1---------- //
 
 		/* Retrieves all champions */
 		ChampionList getChampionList(bool freeToPlay=false);

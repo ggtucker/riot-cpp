@@ -17,8 +17,8 @@ Usage
 int main(int argc, char** argv)
 {
 	Riot::api_key = "<INSERT-YOUR-API-KEY-HERE>";
-	Riot::region = Region::NA;    // Note: these values default to NA
-	Riot::locale = Locale::en_US; // and en_US and do not need to be set
+	Riot::region = Riot::Region::NA;    // Note: these values default to NA
+	Riot::locale = Riot::Locale::en_US; // and en_US and do not need to be set
 
 	// We are now ready to use riot-cpp!
 	// See below for the list of API functions
@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 
 NOTE: THIS IS A WORK IN PROGRESS
 --------------------------------
-I'm nearly done, I just have to finish writing the rest of the parsing functions. Currently the working API functions are:
+I'm nearly done, I just have to finish writing the rest of the DataParser functions. Currently the working API functions are:
 
 ```c++
 ChampionList getChampionList(bool freeToPlay=false);
@@ -40,7 +40,7 @@ API Functions
 -------------
 
 ```c++
-	// ----------API Resource: game-v1.3---------- //
+	// ----------API Resource: champion-v1.1---------- //
 
 		/* Retrieves all champions */
 		ChampionList getChampionList(bool freeToPlay=false);
@@ -146,15 +146,17 @@ API Functions
 
 		/* Retrieves team for each of the given team IDs */
 		std::map<std::string, Team> getTeams(const std::vector<std::string>& teamIDs);
-
-	// ----------Helper Functions---------- //
-
-		/* Returns ids in a comma delimited string */
-		std::string formatIDList(const std::vector<long long>& ids);
-
-		/* Returns names in a comma delimited string */
-		std::string formatIDList(const std::vector<std::string>& ids);
 ```
+
+Supported API Versions
+----------------------
+- champion-v1.1
+- game-v1.3
+- league-v2.3
+- lol-static-data-v1
+- stats-v1.2
+- summoner-v1.3
+- team-v2.2
 
 Disclaimer
 ----------

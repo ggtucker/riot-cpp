@@ -19,7 +19,7 @@ namespace Riot
 		const std::string TEAM_API_VERSION = "/v2.2/";
 	}
 
-	// ----------API Resource: game-v1.3---------- //
+	// ----------API Resource: champion-v1.1---------- //
 
 		/* Retrieves all champions */
 		ChampionList getChampionList(bool freeToPlay)
