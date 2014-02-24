@@ -114,6 +114,7 @@ namespace Riot
 			}
 
 			void printDTOMap(std::string label, const DTOField<std::map<std::string, bool>>& mapField);
+			void printDTOMap(std::string label, const DTOField<std::map<std::string, std::string>>& mapField);
 	}
 }
 
