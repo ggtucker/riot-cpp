@@ -110,12 +110,19 @@ namespace Riot
 
 		// ----------The less glorious wall of helper functions---------- //
 
+			void assignValue(bool& var, const Value& json);
+			void assignValue(int& var, const Value& json);
+			void assignValue(long long& var, const Value& json);
+			void assignValue(double& var, const Value& json);
+			void assignValue(std::string& var, const Value& json);
+
 			std::vector<char> parseCharVector(const Value& json);
 			std::vector<std::string> parseStringVector(const Value& json);
 			std::vector<double> parseDoubleVector(const Value& json);
 			std::vector<int> parseIntVector(const Value& json);
 			std::vector<std::vector<int>> parse2DIntVector(const Value& json);
 			std::map<std::string, std::string> parseStringByStringMap(const Value& json);
+			std::map<std::string, bool> parseBoolByStringMap(const Value& json);
 	}
 }
 

@@ -17,6 +17,15 @@ namespace Riot
 		const std::string STATS_API_VERSION = "/v1.2/";
 		const std::string SUMMONER_API_VERSION = "/v1.3/";
 		const std::string TEAM_API_VERSION = "/v2.2/";
+
+		/*rapidjson::Document parseJSON(std::string url)
+		{
+			rapidjson::Document json;
+			std::string* contents = URLReader::read(url);
+			json.Parse<0>(contents->c_str());
+			delete contents;
+			return json;
+		}*/
 	}
 
 	// ----------API Resource: champion-v1.1---------- //
@@ -36,7 +45,7 @@ namespace Riot
 			json.Parse<0>(URLReader::read(url).c_str());
 			return RiotParser::parseChampionList(json);
 		}
-
+		
 	// ----------API Resource: game-v1.3---------- //
 
 		/* Retrieves recent games by summoner */
@@ -503,7 +512,7 @@ namespace Riot
 			json.Parse<0>(URLReader::read(url).c_str());
 			return RiotParser::parseTeamsById(json);
 		}
-
+		
 	// ----------Helper Functions---------- //
 
 		/* Returns ids in a comma delimited string */
