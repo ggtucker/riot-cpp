@@ -34,6 +34,8 @@ I'm nearly done, I just have to finish writing the rest of the DataParser functi
 ChampionList getChampionList(bool freeToPlay=false);
 RecentGames getRecentGames(long long summonerID);
 League getChallengerLeague(QueueType qtype=QueueType::RANKED_SOLO_5x5);
+std::vector<LeagueItem> getLeagueItems(long long summonerID);
+std::vector<League> getLeagues(long long summonerID);
 ChampionData getChampionData(long long championID, ChampData cdata=ChampData::ALL);
 ChampionDataList getChampionDataList(ChampData cdata=ChampData::ALL);
 ```
