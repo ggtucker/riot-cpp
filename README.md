@@ -12,7 +12,7 @@ Usage
 ```c++
 // main.cpp
 
-#include "Riot.hpp"
+#include <RiotCPP/Riot.hpp>
 
 int main(int argc, char** argv)
 {
@@ -152,40 +152,40 @@ API Functions
 		std::map<std::string, Team> getTeams(const std::vector<std::string>& teamIDs);
 ```
 
-DataPrinter
+RiotPrinter
 -----------
-For testing applications, I've provided a nicely formatted and easy way to view the DTO data using the DataPrinter. Look below to see how the DataPrinter might be used. (Note: These print statements print ALL of the fields from the corresponding DTO, so it's advised to print only a few DTOs at a time)
+For testing applications, I've provided a nicely formatted and easy way to view the DTO data using the RiotPrinter. Look below to see how the RiotPrinter might be used. (Note: These print statements print ALL of the fields from the corresponding DTO, so it's advised to print only a few DTOs at a time)
 
 ```c++
-#include "Riot.hpp"
-#include "DataPrinter.hpp"
+#include <RiotCPP/Riot.hpp>
+#include <RiotCPP/RiotPrinter.hpp>
 
 int main(int argc, char** argv)
 {
 	Riot::api_key = "<INSERT-YOUR-API-KEY-HERE>";
 	
 	Riot::ChampionList clist = Riot::getChampionList(true);
-	Riot::DataPrinter::printChampionList(clist);
+	Riot::RiotPrinter::printChampionList(clist);
 
 	Riot::RecentGames rgames = Riot::getRecentGames(5908);
-	Riot::DataPrinter::printRecentGames(rgames);
+	Riot::RiotPrinter::printRecentGames(rgames);
 
 	Riot::League cleague = Riot::getChallengerLeague();
-	Riot::DataPrinter::printLeague(cleague);
+	Riot::RiotPrinter::printLeague(cleague);
 
 	std::vector<Riot::LeagueItem> leagueItems = Riot::getLeagueItems(5908);
 	for(int i = 0; i < leagueItems.size(); i++)
-		Riot::DataPrinter::printLeagueItem(leagueItems[i]);
+		Riot::RiotPrinter::printLeagueItem(leagueItems[i]);
 
 	std::vector<Riot::League> leagues = Riot::getLeagues(5908);
 	for(int i = 0; i < leagues.size(); i++)
-		Riot::DataPrinter::printLeague(leagues[i]);
+		Riot::RiotPrinter::printLeague(leagues[i]);
 
 	Riot::ChampionData cdata = Riot::getChampionData(13);
-	Riot::DataPrinter::printChampionData(cdata);
+	Riot::RiotPrinter::printChampionData(cdata);
 
 	Riot::ChampionDataList cdatalist = Riot::getChampionDataList();
-	Riot::DataPrinter::printChampionDataList(cdatalist);
+	Riot::RiotPrinter::printChampionDataList(cdatalist);
 }
 ```
 
