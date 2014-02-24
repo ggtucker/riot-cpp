@@ -142,12 +142,31 @@ namespace Riot
 		{
 			Block block;
 
+			if(json.HasMember("type"))
+				block.type = json["type"].GetString();
+
+			if(json.HasMember("items"))
+			{
+				std::vector<BlockItem> items;
+				const Value& blockItemListDto = json["items"];
+				for (SizeType i = 0; i < blockItemListDto.Size(); i++)
+				{
+					items.push_back(parseBlockItem(blockItemListDto[i]));
+				}
+				block.items = items;
+			}
+
 			return block;
 		}
 
 		BlockItem parseBlockItem(const Value& json)
 		{
 			BlockItem blockItem;
+
+			if(json.HasMember("count"))
+				blockItem.count = json["count"].GetInt();
+			if(json.HasMember("id"))
+				blockItem.id = json["id"].GetString();
 
 			return blockItem;
 		}
@@ -186,12 +205,94 @@ namespace Riot
 		{
 			ChampionData championData;
 
+			if(json.HasMember("allytips"))
+				championData.allytips = parseStringVector(json["allytips"]);
+			if(json.HasMember("blurb"))
+				championData.blurb = json["blurb"].GetString();
+			if(json.HasMember("enemytips"))
+				championData.enemytips = parseStringVector(json["enemytips"]);
+			if(json.HasMember("id"))
+				championData.id = json["id"].GetString();
+			if(json.HasMember("image"))
+				championData.image = parseImage(json["image"]);
+			if(json.HasMember("info"))
+				championData.info = parseInfo(json["info"]);
+			if(json.HasMember("key"))
+				championData.key = json["key"].GetString();
+			if(json.HasMember("lore"))
+				championData.lore = json["lore"].GetString();
+			if(json.HasMember("name"))
+				championData.name = json["name"].GetString();
+			if(json.HasMember("partype"))
+				championData.partype = json["partype"].GetString();
+			if(json.HasMember("passive"))
+				championData.passive = parsePassive(json["passive"]);
+			if(json.HasMember("stats"))
+				championData.stats = parseStats(json["stats"]);
+			if(json.HasMember("tags"))
+				championData.tags = parseStringVector(json["tags"]);
+			if(json.HasMember("title"))
+				championData.title = json["title"].GetString();
+
+			if(json.HasMember("recommended"))
+			{
+				std::vector<Recommended> recommended;
+				const Value& recommendedListDto = json["recommended"];
+				for (SizeType i = 0; i < recommendedListDto.Size(); i++)
+				{
+					recommended.push_back(parseRecommended(recommendedListDto[i]));
+				}
+				championData.recommended = recommended;
+			}
+			if(json.HasMember("skins"))
+			{
+				std::vector<Skin> skins;
+				const Value& skinListDto = json["skins"];
+				for (SizeType i = 0; i < skinListDto.Size(); i++)
+				{
+					skins.push_back(parseSkin(skinListDto[i]));
+				}
+				championData.skins = skins;
+			}
+			if(json.HasMember("spells"))
+			{
+				std::vector<ChampionSpell> spells;
+				const Value& spellListDto = json["spells"];
+				for (SizeType i = 0; i < spellListDto.Size(); i++)
+				{
+					spells.push_back(parseChampionSpell(spellListDto[i]));
+				}
+				championData.spells = spells;
+			}
+
 			return championData;
 		}
 
 		ChampionDataList parseChampionDataList(const Value& json)
 		{
 			ChampionDataList championDataList;
+
+			if(json.HasMember("format"))
+				championDataList.format = json["format"].GetString();
+			if(json.HasMember("type"))
+				championDataList.type = json["type"].GetString();
+			if(json.HasMember("version"))
+				championDataList.version = json["version"].GetString();
+			if(json.HasMember("keys"))
+				championDataList.keys = parseStringByStringMap(json["keys"]);
+
+			if(json.HasMember("data"))
+			{
+				std::map<std::string, ChampionData> data;
+				if(json["data"].IsObject())
+				{
+					for (rapidjson::Value::ConstMemberIterator itr = json["data"].MemberBegin(); itr != json["data"].MemberEnd(); ++itr)
+					{
+						data[itr->name.GetString()] = parseChampionData(itr->value);
+					}
+				}
+				championDataList.data = data;
+			}
 
 			return championDataList;
 		}
@@ -217,6 +318,52 @@ namespace Riot
 		ChampionSpell parseChampionSpell(const Value& json)
 		{
 			ChampionSpell championSpell;
+
+			if(json.HasMember("cooldown"))
+				championSpell.cooldown = parseIntVector(json["cooldown"]);
+			if(json.HasMember("cooldownBurn"))
+				championSpell.cooldownBurn = json["cooldownBurn"].GetString();
+			if(json.HasMember("cost"))
+				championSpell.cost = parseIntVector(json["cost"]);
+			if(json.HasMember("costBurn"))
+				championSpell.costBurn = json["costBurn"].GetString();
+			if(json.HasMember("costType"))
+				championSpell.costType = json["costType"].GetString();
+			if(json.HasMember("description"))
+				championSpell.description = json["description"].GetString();
+			if(json.HasMember("effect"))
+				championSpell.effect = parse2DIntVector(json["effect"]);
+			if(json.HasMember("effectBurn"))
+				championSpell.effectBurn = parseStringVector(json["effectBurn"]);
+			if(json.HasMember("id"))
+				championSpell.id = json["id"].GetString();
+			if(json.HasMember("image"))
+				championSpell.image = parseImage(json["image"]);
+			if(json.HasMember("leveltip"))
+				championSpell.leveltip = parseLevelTip(json["leveltip"]);
+			if(json.HasMember("maxrank"))
+				championSpell.maxrank = json["maxrank"].GetInt();
+			if(json.HasMember("name"))
+				championSpell.name = json["name"].GetString();
+			if(json.HasMember("range"))
+				championSpell.range = parseIntVector(json["range"]);
+			if(json.HasMember("rangeBurn"))
+				championSpell.rangeBurn = json["rangeBurn"].GetString();
+			if(json.HasMember("resource"))
+				championSpell.resource = json["resource"].GetString();
+			if(json.HasMember("tooltip"))
+				championSpell.tooltip = json["tooltip"].GetString();
+
+			if(json.HasMember("vars"))
+			{
+				std::vector<SpellVars> vars;
+				const Value& varsListDto = json["vars"];
+				for (SizeType i = 0; i < varsListDto.Size(); i++)
+				{
+					vars.push_back(parseSpellVars(varsListDto[i]));
+				}
+				championSpell.vars = vars;
+			}
 
 			return championSpell;
 		}
@@ -291,12 +438,36 @@ namespace Riot
 		{
 			Image image;
 
+			if(json.HasMember("full"))
+				image.full = json["full"].GetString();
+			if(json.HasMember("group"))
+				image.group = json["group"].GetString();
+			if(json.HasMember("h"))
+				image.h = json["h"].GetInt();
+			if(json.HasMember("sprite"))
+				image.sprite = json["sprite"].GetString();
+			if(json.HasMember("w"))
+				image.w = json["w"].GetInt();
+			if(json.HasMember("x"))
+				image.x = json["x"].GetInt();
+			if(json.HasMember("y"))
+				image.y = json["y"].GetInt();
+
 			return image;
 		}
 
 		Info parseInfo(const Value& json)
 		{
 			Info info;
+
+			if(json.HasMember("attack"))
+				info.attack = json["attack"].GetInt();
+			if(json.HasMember("defense"))
+				info.defense = json["defense"].GetInt();
+			if(json.HasMember("difficulty"))
+				info.difficulty = json["difficulty"].GetInt();
+			if(json.HasMember("magic"))
+				info.magic = json["magic"].GetInt();
 
 			return info;
 		}
@@ -338,10 +509,10 @@ namespace Riot
 			if(json.HasMember("entries"))
 			{
 				std::vector<LeagueItem> entries;
-				const Value& playerListDto = json["entries"];
-				for (SizeType i = 0; i < playerListDto.Size(); i++)
+				const Value& leagueItemListDto = json["entries"];
+				for (SizeType i = 0; i < leagueItemListDto.Size(); i++)
 				{
-					entries.push_back(parseLeagueItem(playerListDto[i]));
+					entries.push_back(parseLeagueItem(leagueItemListDto[i]));
 				}
 				league.entries = entries;
 			}
@@ -352,6 +523,11 @@ namespace Riot
 		std::vector<League> parseLeagueList(const Value& json)
 		{
 			std::vector<League> leagueList;
+
+			for (SizeType i = 0; i < json.Size(); i++)
+			{
+				leagueList.push_back(parseLeague(json[i]));
+			}
 
 			return leagueList;
 		}
@@ -396,12 +572,22 @@ namespace Riot
 		{
 			std::vector<LeagueItem> leagueItemList;
 
+			for (SizeType i = 0; i < json.Size(); i++)
+			{
+				leagueItemList.push_back(parseLeagueItem(json[i]));
+			}
+
 			return leagueItemList;
 		}
 
 		LevelTip parseLevelTip(const Value& json)
 		{
 			LevelTip levelTip;
+
+			if(json.HasMember("effect"))
+				levelTip.effect = parseStringVector(json["effect"]);
+			if(json.HasMember("label"))
+				levelTip.label = parseStringVector(json["label"]);
 
 			return levelTip;
 		}
@@ -495,17 +681,8 @@ namespace Riot
 				miniSeries.timeLeftToPlayMillis = json["timeLeftToPlayMillis"].GetInt64();
 			if(json.HasMember("wins"))
 				miniSeries.wins = json["wins"].GetInt();
-
 			if(json.HasMember("progress"))
-			{
-				std::vector<char> progress;
-				const Value& progressDto = json["progress"];
-				for (SizeType i = 0; i < progressDto.Size(); i++)
-				{
-					progress.push_back(progressDto[i].GetString()[0]);
-				}
-				miniSeries.progress = progress;
-			}
+				miniSeries.progress = parseCharVector(json["progress"]);
 
 			return miniSeries;
 		}
@@ -513,6 +690,13 @@ namespace Riot
 		Passive parsePassive(const Value& json)
 		{
 			Passive passive;
+
+			if(json.HasMember("description"))
+				passive.description = json["description"].GetString();
+			if(json.HasMember("image"))
+				passive.image = parseImage(json["image"]);
+			if(json.HasMember("name"))
+				passive.name = json["name"].GetString();
 
 			return passive;
 		}
@@ -744,6 +928,30 @@ namespace Riot
 		{
 			Recommended recommended;
 
+			if(json.HasMember("champion"))
+				recommended.champion = json["champion"].GetString();
+			if(json.HasMember("map"))
+				recommended.map = json["map"].GetString();
+			if(json.HasMember("mode"))
+				recommended.mode = json["mode"].GetString();
+			if(json.HasMember("priority"))
+				recommended.priority = json["priority"].GetBool();
+			if(json.HasMember("title"))
+				recommended.title = json["title"].GetString();
+			if(json.HasMember("type"))
+				recommended.type = json["type"].GetString();
+
+			if(json.HasMember("blocks"))
+			{
+				std::vector<Block> blocks;
+				const Value& blockListDto = json["blocks"];
+				for (SizeType i = 0; i < blockListDto.Size(); i++)
+				{
+					blocks.push_back(parseBlock(blockListDto[i]));
+				}
+				recommended.blocks = blocks;
+			}
+
 			return recommended;
 		}
 
@@ -807,6 +1015,13 @@ namespace Riot
 		{
 			Skin skin;
 
+			if(json.HasMember("id"))
+				skin.id = json["id"].GetString();
+			if(json.HasMember("name"))
+				skin.name = json["name"].GetString();
+			if(json.HasMember("num"))
+				skin.num = json["num"].GetInt();
+
 			return skin;
 		}
 
@@ -814,12 +1029,60 @@ namespace Riot
 		{
 			SpellVars spellVars;
 
+			if(json.HasMember("link"))
+				spellVars.link = json["link"].GetString();
+			if(json.HasMember("coeff"))
+				spellVars.coeff = parseDoubleVector(json["coeff"]);
+			if(json.HasMember("key"))
+				spellVars.key = json["key"].GetString();
+
 			return spellVars;
 		}
 
 		Stats parseStats(const Value& json)
 		{
 			Stats stats;
+
+			if(json.HasMember("armor"))
+				stats.armor = json["armor"].GetDouble();
+			if(json.HasMember("armorperlevel"))
+				stats.armorperlevel = json["armorperlevel"].GetDouble();
+			if(json.HasMember("attackdamage"))
+				stats.attackdamage = json["attackdamage"].GetDouble();
+			if(json.HasMember("attackdamageperlevel"))
+				stats.attackdamageperlevel = json["attackdamageperlevel"].GetDouble();
+			if(json.HasMember("attackrange"))
+				stats.attackrange = json["attackrange"].GetDouble();
+			if(json.HasMember("attackspeedoffset"))
+				stats.attackspeedoffset = json["attackspeedoffset"].GetDouble();
+			if(json.HasMember("attackspeedperlevel"))
+				stats.attackspeedperlevel = json["attackspeedperlevel"].GetDouble();
+			if(json.HasMember("crit"))
+				stats.crit = json["crit"].GetDouble();
+			if(json.HasMember("critperlevel"))
+				stats.critperlevel = json["critperlevel"].GetDouble();
+			if(json.HasMember("hp"))
+				stats.hp = json["hp"].GetDouble();
+			if(json.HasMember("hpperlevel"))
+				stats.hpperlevel = json["hpperlevel"].GetDouble();
+			if(json.HasMember("hpregen"))
+				stats.hpregen = json["hpregen"].GetDouble();
+			if(json.HasMember("hpregenperlevel"))
+				stats.hpregenperlevel = json["hpregenperlevel"].GetDouble();
+			if(json.HasMember("movespeed"))
+				stats.movespeed = json["movespeed"].GetDouble();
+			if(json.HasMember("mp"))
+				stats.mp = json["mp"].GetDouble();
+			if(json.HasMember("mpperlevel"))
+				stats.mpperlevel = json["mpperlevel"].GetDouble();
+			if(json.HasMember("mpregen"))
+				stats.mpregen = json["mpregen"].GetDouble();
+			if(json.HasMember("mpregenperlevel"))
+				stats.mpregenperlevel = json["mpregenperlevel"].GetDouble();
+			if(json.HasMember("spellblock"))
+				stats.spellblock = json["spellblock"].GetDouble();
+			if(json.HasMember("spellblockperlevel"))
+				stats.spellblockperlevel = json["spellblockperlevel"].GetDouble();
 
 			return stats;
 		}
@@ -913,6 +1176,102 @@ namespace Riot
 			TeamStatSummary teamStatSummary;
 
 			return teamStatSummary;
+		}
+
+		// Helper functions
+
+		std::vector<char> parseCharVector(const Value& json)
+		{
+			std::vector<char> charVector;
+			if(json.IsArray())
+			{
+				for (SizeType i = 0; i < json.Size(); i++)
+				{
+					charVector.push_back(json[i].GetString()[0]);
+				}
+			}
+			else if(json.IsString())
+			{
+				charVector.push_back(json.GetString()[0]);
+			}
+			return charVector;
+		}
+
+		std::vector<std::string> parseStringVector(const Value& json)
+		{
+			std::vector<std::string> stringVector;
+			if(json.IsArray())
+			{
+				for (SizeType i = 0; i < json.Size(); i++)
+				{
+					stringVector.push_back(json[i].GetString());
+				}
+			}
+			else if(json.IsString())
+			{
+				stringVector.push_back(json.GetString());
+			}
+			return stringVector;
+		}
+
+		std::vector<double> parseDoubleVector(const Value& json)
+		{
+			std::vector<double> doubleVector;
+			if(json.IsArray())
+			{
+				for (SizeType i = 0; i < json.Size(); i++)
+				{
+					doubleVector.push_back(json[i].GetDouble());
+				}
+			}
+			else if(json.IsDouble())
+			{
+				doubleVector.push_back(json.GetDouble());
+			}
+			return doubleVector;
+		}
+
+		std::vector<int> parseIntVector(const Value& json)
+		{
+			std::vector<int> intVector;
+			if(json.IsArray())
+			{
+				for (SizeType i = 0; i < json.Size(); i++)
+				{
+					intVector.push_back(json[i].GetInt());
+				}
+			}
+			else if(json.IsInt())
+			{
+				intVector.push_back(json.GetInt());
+			}
+			return intVector;
+		}
+
+		std::vector<std::vector<int>> parse2DIntVector(const Value& json)
+		{
+			std::vector<std::vector<int>> intVector2D;
+			if(json.IsArray())
+			{
+				for (SizeType i = 0; i < json.Size(); i++)
+				{
+					intVector2D.push_back(parseIntVector(json[i]));
+				}
+			}
+			return intVector2D;
+		}
+
+		std::map<std::string, std::string> parseStringByStringMap(const Value& json)
+		{
+			std::map<std::string, std::string> stringByStringMap;
+			if(json.IsObject())
+			{
+				for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
+				{
+					stringByStringMap[itr->name.GetString()] = itr->value.GetString();
+				}
+			}
+			return stringByStringMap;
 		}
 	}
 }

@@ -957,7 +957,7 @@ namespace Riot
 			indent += INDENT;
 
 			std::cout << indent << "LINK: " << data.link << std::endl;
-			std::cout << indent << "COEFF: " << data.coeff << std::endl;
+			printVector<double>(indent + "COEFF: ", data.coeff);
 			std::cout << indent << "KEY: " << data.key << std::endl;
 		}
 

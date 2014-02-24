@@ -34,6 +34,8 @@ I'm nearly done, I just have to finish writing the rest of the DataParser functi
 ChampionList getChampionList(bool freeToPlay=false);
 RecentGames getRecentGames(long long summonerID);
 League getChallengerLeague(QueueType qtype=QueueType::RANKED_SOLO_5x5);
+ChampionData getChampionData(long long championID, ChampData cdata=ChampData::ALL);
+ChampionDataList getChampionDataList(ChampData cdata=ChampData::ALL);
 ```
 
 API Functions
@@ -146,6 +148,43 @@ API Functions
 
 		/* Retrieves team for each of the given team IDs */
 		std::map<std::string, Team> getTeams(const std::vector<std::string>& teamIDs);
+```
+
+DataPrinter
+-----------
+For testing applications, I've provided a nicely formatted and easy way to view the DTO data using the DataPrinter. Look below to see how the DataPrinter might be used. (Note: These print statements print ALL of the fields from the corresponding DTO, so it's advised to print only a few DTOs at a time)
+
+```c++
+#include "Riot.hpp"
+#include "DataPrinter.hpp"
+
+int main(int argc, char** argv)
+{
+	Riot::api_key = "<INSERT-YOUR-API-KEY-HERE>";
+	
+	Riot::ChampionList clist = Riot::getChampionList(true);
+	Riot::DataPrinter::printChampionList(clist);
+
+	Riot::RecentGames rgames = Riot::getRecentGames(5908);
+	Riot::DataPrinter::printRecentGames(rgames);
+
+	Riot::League cleague = Riot::getChallengerLeague();
+	Riot::DataPrinter::printLeague(cleague);
+
+	std::vector<Riot::LeagueItem> leagueItems = Riot::getLeagueItems(5908);
+	for(int i = 0; i < leagueItems.size(); i++)
+		Riot::DataPrinter::printLeagueItem(leagueItems[i]);
+
+	std::vector<Riot::League> leagues = Riot::getLeagues(5908);
+	for(int i = 0; i < leagues.size(); i++)
+		Riot::DataPrinter::printLeague(leagues[i]);
+
+	Riot::ChampionData cdata = Riot::getChampionData(13);
+	Riot::DataPrinter::printChampionData(cdata);
+
+	Riot::ChampionDataList cdatalist = Riot::getChampionDataList();
+	Riot::DataPrinter::printChampionDataList(cdatalist);
+}
 ```
 
 Supported API Versions

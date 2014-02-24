@@ -8,7 +8,7 @@ namespace Riot
 	struct SpellVars
 	{
 		std::string link;
-		double coeff;
+		std::vector<double> coeff;
 		std::string key;
 	};
 }

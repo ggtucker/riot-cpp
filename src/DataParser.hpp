@@ -109,6 +109,15 @@ namespace Riot
 			TeamMemberInfo parseTeamMemberInfo(const Value& json);
 			TeamStatDetail parseTeamStatDetail(const Value& json);
 			TeamStatSummary parseTeamStatSummary(const Value& json);
+
+		// ----------The less glorious wall of helper functions---------- //
+
+			std::vector<char> parseCharVector(const Value& json);
+			std::vector<std::string> parseStringVector(const Value& json);
+			std::vector<double> parseDoubleVector(const Value& json);
+			std::vector<int> parseIntVector(const Value& json);
+			std::vector<std::vector<int>> parse2DIntVector(const Value& json);
+			std::map<std::string, std::string> parseStringByStringMap(const Value& json);
 	}
 }
 
