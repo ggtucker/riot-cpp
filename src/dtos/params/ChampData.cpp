@@ -1,4 +1,4 @@
-#include "ChampData.hpp"
+#include <RiotCPP/DTO/Param/ChampData.hpp>
 
 namespace Riot
 {

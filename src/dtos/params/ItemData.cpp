@@ -1,4 +1,4 @@
-#include "ItemData.hpp"
+#include <RiotCPP/DTO/Param/ItemData.hpp>
 
 namespace Riot
 {

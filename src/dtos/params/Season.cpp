@@ -1,4 +1,4 @@
-#include "Season.hpp"
+#include <RiotCPP/DTO/Param/Season.hpp>
 
 namespace Riot
 {

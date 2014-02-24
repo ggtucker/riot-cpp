@@ -6,20 +6,20 @@
 #include <string>
 #include <rapidjson/document.h>
 #include <rapidjson/reader.h>
-#include "URLReader.hpp"
-#include "DataParser.hpp"
-#include "dtos/params/ChampData.hpp"
-#include "dtos/params/ItemData.hpp"
-#include "dtos/params/ItemListData.hpp"
-#include "dtos/params/Locale.hpp"
-#include "dtos/params/MasteryData.hpp"
-#include "dtos/params/MasteryListData.hpp"
-#include "dtos/params/QueueType.hpp"
-#include "dtos/params/Region.hpp"
-#include "dtos/params/RuneData.hpp"
-#include "dtos/params/RuneListData.hpp"
-#include "dtos/params/Season.hpp"
-#include "dtos/params/SpellData.hpp"
+#include <RiotCPP/Parser/URLReader.hpp>
+#include <RiotCPP/Parser/RiotParser.hpp>
+#include <RiotCPP/DTO/Param/ChampData.hpp>
+#include <RiotCPP/DTO/Param/ItemData.hpp>
+#include <RiotCPP/DTO/Param/ItemListData.hpp>
+#include <RiotCPP/DTO/Param/Locale.hpp>
+#include <RiotCPP/DTO/Param/MasteryData.hpp>
+#include <RiotCPP/DTO/Param/MasteryListData.hpp>
+#include <RiotCPP/DTO/Param/QueueType.hpp>
+#include <RiotCPP/DTO/Param/Region.hpp>
+#include <RiotCPP/DTO/Param/RuneData.hpp>
+#include <RiotCPP/DTO/Param/RuneListData.hpp>
+#include <RiotCPP/DTO/Param/Season.hpp>
+#include <RiotCPP/DTO/Param/SpellData.hpp>
 
 namespace Riot
 {

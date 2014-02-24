@@ -1,34 +1,34 @@
-#ifndef DATA_PRINTER_HPP
-#define DATA_PRINTER_HPP
+#ifndef RIOT_PRINTER_HPP
+#define RIOT_PRINTER_HPP
 
 #include <iostream>
-#include "dtos/Champion.hpp"
-#include "dtos/ChampionList.hpp"
-#include "dtos/ChampionData.hpp"
-#include "dtos/ChampionDataList.hpp"
-#include "dtos/RecentGames.hpp"
-#include "dtos/Game.hpp"
-#include "dtos/League.hpp"
-#include "dtos/LeagueItem.hpp"
-#include "dtos/Item.hpp"
-#include "dtos/ItemList.hpp"
-#include "dtos/Mastery.hpp"
-#include "dtos/MasteryList.hpp"
-#include "dtos/Realm.hpp"
-#include "dtos/Rune.hpp"
-#include "dtos/RuneList.hpp"
-#include "dtos/SummonerSpell.hpp"
-#include "dtos/SummonerSpellList.hpp"
-#include "dtos/PlayerStatsSummaryList.hpp"
-#include "dtos/RankedStats.hpp"
-#include "dtos/Summoner.hpp"
-#include "dtos/MasteryPages.hpp"
-#include "dtos/RunePages.hpp"
-#include "dtos/Team.hpp"
+#include <RiotCPP/DTO/Champion.hpp>
+#include <RiotCPP/DTO/ChampionList.hpp>
+#include <RiotCPP/DTO/ChampionData.hpp>
+#include <RiotCPP/DTO/ChampionDataList.hpp>
+#include <RiotCPP/DTO/RecentGames.hpp>
+#include <RiotCPP/DTO/Game.hpp>
+#include <RiotCPP/DTO/League.hpp>
+#include <RiotCPP/DTO/LeagueItem.hpp>
+#include <RiotCPP/DTO/Item.hpp>
+#include <RiotCPP/DTO/ItemList.hpp>
+#include <RiotCPP/DTO/Mastery.hpp>
+#include <RiotCPP/DTO/MasteryList.hpp>
+#include <RiotCPP/DTO/Realm.hpp>
+#include <RiotCPP/DTO/Rune.hpp>
+#include <RiotCPP/DTO/RuneList.hpp>
+#include <RiotCPP/DTO/SummonerSpell.hpp>
+#include <RiotCPP/DTO/SummonerSpellList.hpp>
+#include <RiotCPP/DTO/PlayerStatsSummaryList.hpp>
+#include <RiotCPP/DTO/RankedStats.hpp>
+#include <RiotCPP/DTO/Summoner.hpp>
+#include <RiotCPP/DTO/MasteryPages.hpp>
+#include <RiotCPP/DTO/RunePages.hpp>
+#include <RiotCPP/DTO/Team.hpp>
 
 namespace Riot
 {
-	namespace DataPrinter
+	namespace RiotPrinter
 	{
 		// ----------The glorious wall of print functions---------- //
 
@@ -126,4 +126,4 @@ namespace Riot
 	}
 }
 
-#endif // DATA_PRINTER_HPP
+#endif // RIOT_PRINTER_HPP

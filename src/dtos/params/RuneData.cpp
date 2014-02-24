@@ -1,4 +1,4 @@
-#include "RuneData.hpp"
+#include <RiotCPP/DTO/Param/RuneData.hpp>
 
 namespace Riot
 {

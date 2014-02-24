@@ -1,4 +1,4 @@
-#include "Riot.hpp"
+#include <RiotCPP/Riot.hpp>
 
 namespace Riot
 {
@@ -34,7 +34,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseChampionList(json);
+			return RiotParser::parseChampionList(json);
 		}
 
 	// ----------API Resource: game-v1.3---------- //
@@ -53,7 +53,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseRecentGames(json);
+			return RiotParser::parseRecentGames(json);
 		}
 
 	// ----------API Resource: league-v2.3---------- //
@@ -71,7 +71,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseLeague(json);
+			return RiotParser::parseLeague(json);
 		}
 
 		/* Retrieves leagues item data for each of summoner's teams */
@@ -88,7 +88,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseLeagueItemList(json);
+			return RiotParser::parseLeagueItemList(json);
 		}
 
 		/* Retrieves leagues data for each of summoner's teams */
@@ -104,7 +104,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseLeagueList(json);
+			return RiotParser::parseLeagueList(json);
 		}
 
 	// ----------API Resource: lol-static-data-v1---------- //
@@ -124,7 +124,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseChampionData(json);
+			return RiotParser::parseChampionData(json);
 		}
 
 		/* Retrieves list of champion data */
@@ -141,7 +141,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseChampionDataList(json);
+			return RiotParser::parseChampionDataList(json);
 		}
 
 		/* Retrieves item data by ID */
@@ -159,7 +159,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseItem(json);
+			return RiotParser::parseItem(json);
 		}
 
 		/* Retrieves list of item data */
@@ -176,7 +176,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseItemList(json);
+			return RiotParser::parseItemList(json);
 		}
 
 		/* Retrieves mastery data by ID */
@@ -194,7 +194,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseMastery(json);
+			return RiotParser::parseMastery(json);
 		}
 
 		/* Retrieves list of mastery data */
@@ -211,7 +211,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseMasteryList(json);
+			return RiotParser::parseMasteryList(json);
 		}
 
 		/* Retrieves realm data */
@@ -226,7 +226,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseRealm(json);
+			return RiotParser::parseRealm(json);
 		}
 
 		/* Retrieves rune data by ID */
@@ -244,7 +244,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseRune(json);
+			return RiotParser::parseRune(json);
 		}
 
 		/* Retrieves list of rune data */
@@ -261,7 +261,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseRuneList(json);
+			return RiotParser::parseRuneList(json);
 		}
 
 		/* Retrieves spell data by ID */
@@ -279,7 +279,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseSummonerSpell(json);
+			return RiotParser::parseSummonerSpell(json);
 		}
 
 		/* Retrieves list of spell data */
@@ -296,7 +296,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseSummonerSpellList(json);
+			return RiotParser::parseSummonerSpellList(json);
 		}
 
 	// ----------API Resource: stats-v1.2---------- //
@@ -316,7 +316,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parsePlayerStatsSummaryList(json);
+			return RiotParser::parsePlayerStatsSummaryList(json);
 		}
 
 		/* Retrieves player ranked stats */
@@ -334,7 +334,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseRankedStats(json);
+			return RiotParser::parseRankedStats(json);
 		}
 
 	// ----------API Resource: summoner-v1.3---------- //
@@ -361,7 +361,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseMasteryPagesMap(json);
+			return RiotParser::parseMasteryPagesMap(json);
 		}
 
 		/* Retrieves rune pages for given summoner ID */
@@ -386,7 +386,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseRunePagesById(json);
+			return RiotParser::parseRunePagesById(json);
 		}
 
 		/* Retrieves summoner for given summoner name */
@@ -410,7 +410,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseSummonersByName(json);
+			return RiotParser::parseSummonersByName(json);
 		}
 
 		/* Retrieves summoner name for given summoner ID */
@@ -435,7 +435,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseSummonerNamesById(json);
+			return RiotParser::parseSummonerNamesById(json);
 		}
 
 		/* Retrieves summoner for given summoner ID */
@@ -459,7 +459,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseSummonersById(json);
+			return RiotParser::parseSummonersById(json);
 		}
 
 	// ----------API Resource: team-v2.2---------- //
@@ -477,7 +477,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseTeamList(json);
+			return RiotParser::parseTeamList(json);
 		}
 
 		/* Retrieves teams for given team ID */
@@ -501,7 +501,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return DataParser::parseTeamsById(json);
+			return RiotParser::parseTeamsById(json);
 		}
 
 	// ----------Helper Functions---------- //

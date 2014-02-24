@@ -1,4 +1,4 @@
-#include "MasteryData.hpp"
+#include <RiotCPP/DTO/Param/MasteryData.hpp>
 
 namespace Riot
 {

@@ -1,4 +1,4 @@
-#include "Locale.hpp"
+#include <RiotCPP/DTO/Param/Locale.hpp>
 
 namespace Riot
 {

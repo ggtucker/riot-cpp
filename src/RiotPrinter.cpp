@@ -1,8 +1,8 @@
-#include "DataPrinter.hpp"
+#include <RiotCPP/RiotPrinter.hpp>
 
 namespace Riot
 {
-	namespace DataPrinter
+	namespace RiotPrinter
 	{
 		namespace
 		{

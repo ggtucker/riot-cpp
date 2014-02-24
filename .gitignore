@@ -1,8 +1,8 @@
 Debug
 Release
 src/main.cpp
-src/JSONPrinter.hpp
 src/JSONPrinter.cpp
+include/JSONPrinter.hpp
 riot-cpp.sdf
 riot-cpp.sln
 riot-cpp.vcxproj

@@ -1,4 +1,4 @@
-#include "QueueType.hpp"
+#include <RiotCPP/DTO/Param/QueueType.hpp>
 
 namespace Riot
 {

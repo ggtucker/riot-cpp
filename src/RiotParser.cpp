@@ -1,8 +1,8 @@
-#include "DataParser.hpp"
+#include <RiotCPP/Parser/RiotParser.hpp>
 
 namespace Riot
 {
-	namespace DataParser
+	namespace RiotParser
 	{
 		AggregatedStats parseAggregatedStats(const Value& json)
 		{

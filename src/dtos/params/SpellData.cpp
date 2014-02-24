@@ -1,4 +1,4 @@
-#include "SpellData.hpp"
+#include <RiotCPP/DTO/Param/SpellData.hpp>
 
 namespace Riot
 {
