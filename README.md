@@ -28,34 +28,14 @@ int main(int argc, char** argv)
 
 NOTE: THIS IS A WORK IN PROGRESS
 --------------------------------
-I am currently in the process of writing the rest of the DataParser functions. Currently the working API functions are:
-
-```c++
-ChampionList getChampionList(bool freeToPlay=false);
-RecentGames getRecentGames(long long summonerID);
-League getChallengerLeague(QueueType qtype=QueueType::RANKED_SOLO_5x5);
-std::vector<LeagueItem> getLeagueItems(long long summonerID);
-std::vector<League> getLeagues(long long summonerID);
-ChampionData getChampionData(long long championID, ChampData cdata=ChampData::ALL);
-ChampionDataList getChampionDataList(ChampData cdata=ChampData::ALL);
-Item getItem(long long itemID, ItemData idata=ItemData::ALL);
-ItemList getItemList(ItemListData ildata=ItemListData::ALL);
-Mastery getMastery(long long masteryID, MasteryData mdata=MasteryData::ALL);
-MasteryList getMasteryList(MasteryListData mldata=MasteryListData::ALL);
-Realm getRealm();
-Rune getRune(long long runeID, RuneData rdata=RuneData::ALL);
-RuneList getRuneList(RuneListData rldata=RuneListData::ALL);
-SummonerSpell getSummonerSpell(long long spellID, SpellData sdata=SpellData::ALL);
-SummonerSpellList getSummonerSpellList(SpellData sdata=SpellData::ALL);
-```
 
 To Do List
 ----------
-- Finish writing the rest of the DataParser functions
+- Handle response errors
+- Finish testing the DataParser functions
 - For each of the DTOs, add a bool for each field to represent whether that field received a value
 - Modfiy RiotPrinter to only print fields that are valid (less irrelevant clutter being printed)
 - Revise and increase efficiency (i.e. pass by pointer to dynamically allocated data rather than by value, etc.)
-- Handle response errors
 
 API Functions
 -------------
@@ -139,9 +119,11 @@ API Functions
 	/* Retrieves rune pages for each of the given summoner IDs */
 	std::map<long long, RunePages> getRunePages(const std::vector<long long>& summonerIDs);
 
+	/* NAME MUST BE ALL LOWERCASE */
 	/* Retrieves summoner for given summoner name */
 	Summoner getSummoner(const std::string& summonerName);
 
+	/* NAME KEYS ARE ALL LOWERCASE */
 	/* Retrieves summoner for each of the given summoner names */
 	std::map<std::string, Summoner> getSummoners(const std::vector<std::string>& summonerNames);
 
@@ -230,6 +212,30 @@ int main(int argc, char** argv)
 
 	Riot::SummonerSpellList spellList = Riot::getSummonerSpellList();
 	Riot::RiotPrinter::printSummonerSpellList(spellList);
+
+	Riot::PlayerStatsSummaryList dyrusStats = Riot::getPlayerStats(5908);
+	Riot::RiotPrinter::printPlayerStatsSummaryList(dyrusStats);
+
+	Riot::RankedStats dyrusRankedStats = Riot::getRankedStats(5908);
+	Riot::RiotPrinter::printRankedStats(dyrusRankedStats);
+
+	Riot::MasteryPages dyrusMasteryPages = Riot::getMasteryPages(5908);
+	Riot::RiotPrinter::printMasteryPages(dyrusMasteryPages);
+
+	Riot::RunePages dyrusRunePages = Riot::getRunePages(5908);
+	Riot::RiotPrinter::printRunePages(dyrusRunePages);
+
+	Riot::Summoner dyrusSummonerFromName = Riot::getSummoner("dyrus");
+	Riot::RiotPrinter::printSummoner(dyrusSummonerFromName);
+
+	Riot::Summoner dyrusSummonerFromId = Riot::getSummoner(5908);
+	Riot::RiotPrinter::printSummoner(dyrusSummonerFromId);
+
+	std::string summonerName = Riot::getSummonerName(5908);
+	std::cout << summonerName << std::endl;
+
+	Riot::Team tsmTeam = Riot::getTeam("TEAM-e4936d7b-b80e-4367-a76c-5ccf7388c995");
+	Riot::RiotPrinter::printTeam(tsmTeam);
 }
 ```
 
