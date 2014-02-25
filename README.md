@@ -2,6 +2,10 @@ riot-cpp
 ========
 A C++ League of Legends API Wrapper
 ===================================
+
+NOTE: THIS IS A WORK IN PROGRESS
+--------------------------------
+
 riot-cpp is an easy-to-use C++ library with the purpose of handling the HTTP queries and JSON parsing from Riot's API. This library is currently in development by Geoffrey Tucker.
 
 This API wrapper depends on both curl and rapidjson libraries. These submodules can be found in the /lib/ folder. Rapidjson is a header-only C++ library, but Curl on the other hand must be compiled and linked on your individual system.
@@ -25,9 +29,6 @@ int main(int argc, char** argv)
 }
 
 ```
-
-NOTE: THIS IS A WORK IN PROGRESS
---------------------------------
 
 To Do List
 ----------
