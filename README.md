@@ -34,9 +34,9 @@ To Do List
 ----------
 - Handle response errors
 - Finish testing the DataParser functions
-- For each of the DTOs, add a bool for each field to represent whether that field received a value
-- Modfiy RiotPrinter to only print fields that are valid (less irrelevant clutter being printed)
 - Revise and increase efficiency (i.e. pass by pointer to dynamically allocated data rather than by value, etc.)
+- (Considering) For each of the DTOs, add a bool for each field to represent whether that field received a value
+- (Considering) Modify RiotPrinter to only print fields that are valid (less irrelevant clutter being printed)
 
 API Functions
 -------------
