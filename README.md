@@ -38,118 +38,120 @@ std::vector<LeagueItem> getLeagueItems(long long summonerID);
 std::vector<League> getLeagues(long long summonerID);
 ChampionData getChampionData(long long championID, ChampData cdata=ChampData::ALL);
 ChampionDataList getChampionDataList(ChampData cdata=ChampData::ALL);
+Item getItem(long long itemID, ItemData idata=ItemData::ALL);
+ItemList getItemList(ItemListData ildata=ItemListData::ALL);
 ```
 
 API Functions
 -------------
 
 ```c++
-	// ----------API Resource: champion-v1.1---------- //
+// ----------API Resource: champion-v1.1---------- //
 
-		/* Retrieves all champions */
-		ChampionList getChampionList(bool freeToPlay=false);
+	/* Retrieves all champions */
+	ChampionList getChampionList(bool freeToPlay=false);
 
-	// ----------API Resource: game-v1.3---------- //
+// ----------API Resource: game-v1.3---------- //
 
-		/* Retrieves recent games by summoner */
-		RecentGames getRecentGames(long long summonerID);
+	/* Retrieves recent games by summoner */
+	RecentGames getRecentGames(long long summonerID);
 
-	// ----------API Resource: league-v2.3---------- //
+// ----------API Resource: league-v2.3---------- //
 
-		/* Retrieves challenger tier league */
-		League getChallengerLeague(QueueType qtype=QueueType::RANKED_SOLO_5x5);
+	/* Retrieves challenger tier league */
+	League getChallengerLeague(QueueType qtype=QueueType::RANKED_SOLO_5x5);
 
-		/* Retrieves leagues item data for each of summoner's teams */
-		std::vector<LeagueItem> getLeagueItems(long long summonerID);
+	/* Retrieves leagues item data for each of summoner's teams */
+	std::vector<LeagueItem> getLeagueItems(long long summonerID);
 
-		/* Retrieves leagues data for each of summoner's teams */
-		std::vector<League> getLeagues(long long summonerID);
+	/* Retrieves leagues data for each of summoner's teams */
+	std::vector<League> getLeagues(long long summonerID);
 
-	// ----------API Resource: lol-static-data-v1---------- //
+// ----------API Resource: lol-static-data-v1---------- //
 
-		/* Retrieves champion data by ID */
-		ChampionData getChampionData(long long championID, ChampData cdata=ChampData::ALL);
+	/* Retrieves champion data by ID */
+	ChampionData getChampionData(long long championID, ChampData cdata=ChampData::ALL);
 
-		/* Retrieves list of champion data */
-		ChampionDataList getChampionDataList(ChampData cdata=ChampData::ALL);
+	/* Retrieves list of champion data */
+	ChampionDataList getChampionDataList(ChampData cdata=ChampData::ALL);
 
-		/* Retrieves item data by ID */
-		Item getItemData(long long itemID, ItemData idata=ItemData::ALL);
+	/* Retrieves item data by ID */
+	Item getItem(long long itemID, ItemData idata=ItemData::ALL);
 
-		/* Retrieves list of item data */
-		ItemList getItemDataList(ItemListData ildata=ItemListData::ALL);
+	/* Retrieves list of item data */
+	ItemList getItemList(ItemListData ildata=ItemListData::ALL);
 
-		/* Retrieves mastery data by ID */
-		Mastery getMasteryData(long long masteryID, MasteryData mdata=MasteryData::ALL);
+	/* Retrieves mastery data by ID */
+	Mastery getMastery(long long masteryID, MasteryData mdata=MasteryData::ALL);
 
-		/* Retrieves list of mastery data */
-		MasteryList getMasteryDataList(MasteryListData mldata=MasteryListData::ALL);
+	/* Retrieves list of mastery data */
+	MasteryList getMasteryList(MasteryListData mldata=MasteryListData::ALL);
 
-		/* Retrieves realm data */
-		Realm getRealmData();
+	/* Retrieves realm data */
+	Realm getRealm();
 
-		/* Retrieves rune data by ID */
-		Rune getRuneData(long long runeID, RuneData rdata=RuneData::ALL);
+	/* Retrieves rune data by ID */
+	Rune getRune(long long runeID, RuneData rdata=RuneData::ALL);
 
-		/* Retrieves list of rune data */
-		RuneList getRuneDataList(RuneListData rldata=RuneListData::ALL);
+	/* Retrieves list of rune data */
+	RuneList getRuneList(RuneListData rldata=RuneListData::ALL);
 
-		/* Retrieves spell data by ID */
-		SummonerSpell getSpellData(long long spellID, SpellData sdata=SpellData::ALL);
+	/* Retrieves spell data by ID */
+	SummonerSpell getSpell(long long spellID, SpellData sdata=SpellData::ALL);
 
-		/* Retrieves list of spell data */
-		SummonerSpellList getSpellDataList(SpellData sdata=SpellData::ALL);
+	/* Retrieves list of spell data */
+	SummonerSpellList getSpellList(SpellData sdata=SpellData::ALL);
 
-	// ----------API Resource: stats-v1.2---------- //
+// ----------API Resource: stats-v1.2---------- //
 
-		/* Retrieves player stats summaries */
-		PlayerStatsSummaryList getPlayerStats(long long summonerID, Season season=Season::SEASON4);
+	/* Retrieves player stats summaries */
+	PlayerStatsSummaryList getPlayerStats(long long summonerID, Season season=Season::SEASON4);
 
-		/* Retrieves player ranked stats */
-		RankedStats getRankedStats(long long summonerID, Season season=Season::SEASON4);
+	/* Retrieves player ranked stats */
+	RankedStats getRankedStats(long long summonerID, Season season=Season::SEASON4);
 
-	// ----------API Resource: summoner-v1.3---------- //
+// ----------API Resource: summoner-v1.3---------- //
 
-		/* Retrieves mastery pages for given summoner ID */
-		MasteryPages getMasteryPages(long long summonerID);
+	/* Retrieves mastery pages for given summoner ID */
+	MasteryPages getMasteryPages(long long summonerID);
 
-		/* Retrieves mastery pages for each of the given summoner IDs */
-		std::map<long long, MasteryPages> getMasteryPages(const std::vector<long long>& summonerIDs);
+	/* Retrieves mastery pages for each of the given summoner IDs */
+	std::map<long long, MasteryPages> getMasteryPages(const std::vector<long long>& summonerIDs);
 
-		/* Retrieves rune pages for given summoner ID */
-		RunePages getRunePages(long long summonerID);
+	/* Retrieves rune pages for given summoner ID */
+	RunePages getRunePages(long long summonerID);
 
-		/* Retrieves rune pages for each of the given summoner IDs */
-		std::map<long long, RunePages> getRunePages(const std::vector<long long>& summonerIDs);
+	/* Retrieves rune pages for each of the given summoner IDs */
+	std::map<long long, RunePages> getRunePages(const std::vector<long long>& summonerIDs);
 
-		/* Retrieves summoner for given summoner name */
-		Summoner getSummoner(const std::string& summonerName);
+	/* Retrieves summoner for given summoner name */
+	Summoner getSummoner(const std::string& summonerName);
 
-		/* Retrieves summoner for each of the given summoner names */
-		std::map<std::string, Summoner> getSummoners(const std::vector<std::string>& summonerNames);
+	/* Retrieves summoner for each of the given summoner names */
+	std::map<std::string, Summoner> getSummoners(const std::vector<std::string>& summonerNames);
 
-		/* Retrieves summoner name for given summoner ID */
-		std::string getSummonerName(long long summonerID);
+	/* Retrieves summoner name for given summoner ID */
+	std::string getSummonerName(long long summonerID);
 
-		/* Retrieves summoner name for each of the given summoner IDs */
-		std::map<long long, std::string> getSummonerNames(const std::vector<long long>& summonerIDs);
+	/* Retrieves summoner name for each of the given summoner IDs */
+	std::map<long long, std::string> getSummonerNames(const std::vector<long long>& summonerIDs);
 
-		/* Retrieves summoner for given summoner ID */
-		Summoner getSummoner(long long summonerID);
+	/* Retrieves summoner for given summoner ID */
+	Summoner getSummoner(long long summonerID);
 
-		/* Retrieves summoner for each of the given summoner IDs */
-		std::map<long long, Summoner> getSummoners(const std::vector<long long>& summonerIDs);
+	/* Retrieves summoner for each of the given summoner IDs */
+	std::map<long long, Summoner> getSummoners(const std::vector<long long>& summonerIDs);
 
-	// ----------API Resource: team-v2.2---------- //
+// ----------API Resource: team-v2.2---------- //
 
-		/* Retrieves teams for given summoner ID */
-		std::vector<Team> getTeams(long long summonerID);
+	/* Retrieves teams for given summoner ID */
+	std::vector<Team> getTeams(long long summonerID);
 
-		/* Retrieves team for given team ID */
-		Team getTeam(std::string teamID);
+	/* Retrieves team for given team ID */
+	Team getTeam(std::string teamID);
 
-		/* Retrieves team for each of the given team IDs */
-		std::map<std::string, Team> getTeams(const std::vector<std::string>& teamIDs);
+	/* Retrieves team for each of the given team IDs */
+	std::map<std::string, Team> getTeams(const std::vector<std::string>& teamIDs);
 ```
 
 RiotPrinter
@@ -164,28 +166,34 @@ int main(int argc, char** argv)
 {
 	Riot::api_key = "<INSERT-YOUR-API-KEY-HERE>";
 	
-	Riot::ChampionList clist = Riot::getChampionList(true);
-	Riot::RiotPrinter::printChampionList(clist);
+	Riot::ChampionList championList = Riot::getChampionList(true);
+	Riot::RiotPrinter::printChampionList(championList);
 
-	Riot::RecentGames rgames = Riot::getRecentGames(5908);
-	Riot::RiotPrinter::printRecentGames(rgames);
+	Riot::RecentGames recentGames = Riot::getRecentGames(5908);
+	Riot::RiotPrinter::printRecentGames(recentGames);
 
-	Riot::League cleague = Riot::getChallengerLeague();
-	Riot::RiotPrinter::printLeague(cleague);
+	Riot::League championLeague = Riot::getChallengerLeague();
+	Riot::RiotPrinter::printLeague(championLeague);
 
-	std::vector<Riot::LeagueItem> leagueItems = Riot::getLeagueItems(5908);
-	for(int i = 0; i < leagueItems.size(); i++)
-		Riot::RiotPrinter::printLeagueItem(leagueItems[i]);
+	std::vector<Riot::LeagueItem> dyrusLeagueItems = Riot::getLeagueItems(5908);
+	for(int i = 0; i < dyrusLeagueItems.size(); i++)
+		Riot::RiotPrinter::printLeagueItem(dyrusLeagueItems[i]);
+		
+	std::vector<Riot::League> dyrusLeagues = Riot::getLeagues(5908);
+	for(int i = 0; i < dyrusLeagues.size(); i++)
+		Riot::RiotPrinter::printLeague(dyrusLeagues[i]);
 
-	std::vector<Riot::League> leagues = Riot::getLeagues(5908);
-	for(int i = 0; i < leagues.size(); i++)
-		Riot::RiotPrinter::printLeague(leagues[i]);
+	Riot::ChampionData ryzeData = Riot::getChampionData(13);
+	Riot::RiotPrinter::printChampionData(ryzeData);
 
-	Riot::ChampionData cdata = Riot::getChampionData(13);
-	Riot::RiotPrinter::printChampionData(cdata);
+	Riot::ChampionDataList championDataList = Riot::getChampionDataList();
+	Riot::RiotPrinter::printChampionDataList(championDataList);
 
-	Riot::ChampionDataList cdatalist = Riot::getChampionDataList();
-	Riot::RiotPrinter::printChampionDataList(cdatalist);
+	Riot::Item tearOfTheGoddess = Riot::getItem(3070);
+	Riot::RiotPrinter::printItem(tearOfTheGoddess);
+
+	Riot::ItemList itemList = Riot::getItemList();
+	Riot::RiotPrinter::printItemList(itemList);
 }
 ```
 

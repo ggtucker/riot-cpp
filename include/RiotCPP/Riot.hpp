@@ -59,31 +59,31 @@ namespace Riot
 		ChampionDataList getChampionDataList(ChampData cdata=ChampData::ALL);
 
 		/* Retrieves item data by ID */
-		Item getItemData(long long itemID, ItemData idata=ItemData::ALL);
+		Item getItem(long long itemID, ItemData idata=ItemData::ALL);
 
 		/* Retrieves list of item data */
-		ItemList getItemDataList(ItemListData ildata=ItemListData::ALL);
+		ItemList getItemList(ItemListData ildata=ItemListData::ALL);
 
 		/* Retrieves mastery data by ID */
-		Mastery getMasteryData(long long masteryID, MasteryData mdata=MasteryData::ALL);
+		Mastery getMastery(long long masteryID, MasteryData mdata=MasteryData::ALL);
 
 		/* Retrieves list of mastery data */
-		MasteryList getMasteryDataList(MasteryListData mldata=MasteryListData::ALL);
+		MasteryList getMasteryList(MasteryListData mldata=MasteryListData::ALL);
 
 		/* Retrieves realm data */
-		Realm getRealmData();
+		Realm getRealm();
 
 		/* Retrieves rune data by ID */
-		Rune getRuneData(long long runeID, RuneData rdata=RuneData::ALL);
+		Rune getRune(long long runeID, RuneData rdata=RuneData::ALL);
 
 		/* Retrieves list of rune data */
-		RuneList getRuneDataList(RuneListData rldata=RuneListData::ALL);
+		RuneList getRuneList(RuneListData rldata=RuneListData::ALL);
 
 		/* Retrieves spell data by ID */
-		SummonerSpell getSpellData(long long spellID, SpellData sdata=SpellData::ALL);
+		SummonerSpell getSpell(long long spellID, SpellData sdata=SpellData::ALL);
 
 		/* Retrieves list of spell data */
-		SummonerSpellList getSpellDataList(SpellData sdata=SpellData::ALL);
+		SummonerSpellList getSpellList(SpellData sdata=SpellData::ALL);
 
 	// ----------API Resource: stats-v1.2---------- //
 

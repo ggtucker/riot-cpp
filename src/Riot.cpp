@@ -154,7 +154,7 @@ namespace Riot
 		}
 
 		/* Retrieves item data by ID */
-		Item getItemData(long long itemID, ItemData idata)
+		Item getItem(long long itemID, ItemData idata)
 		{
 			std::string url
 				= BASE_STATIC_URL
@@ -172,7 +172,7 @@ namespace Riot
 		}
 
 		/* Retrieves list of item data */
-		ItemList getItemDataList(ItemListData ildata)
+		ItemList getItemList(ItemListData ildata)
 		{
 			std::string url
 				= BASE_STATIC_URL
@@ -189,7 +189,7 @@ namespace Riot
 		}
 
 		/* Retrieves mastery data by ID */
-		Mastery getMasteryData(long long masteryID, MasteryData mdata)
+		Mastery getMastery(long long masteryID, MasteryData mdata)
 		{
 			std::string url
 				= BASE_STATIC_URL
@@ -207,7 +207,7 @@ namespace Riot
 		}
 
 		/* Retrieves list of mastery data */
-		MasteryList getMasteryDataList(MasteryListData mldata)
+		MasteryList getMasteryList(MasteryListData mldata)
 		{
 			std::string url
 				= BASE_STATIC_URL
@@ -224,7 +224,7 @@ namespace Riot
 		}
 
 		/* Retrieves realm data */
-		Realm getRealmData(Region reg)
+		Realm getRealm(Region reg)
 		{
 			std::string url
 				= BASE_STATIC_URL
@@ -239,7 +239,7 @@ namespace Riot
 		}
 
 		/* Retrieves rune data by ID */
-		Rune getRuneData(long long runeID, RuneData rdata)
+		Rune getRune(long long runeID, RuneData rdata)
 		{
 			std::string url
 				= BASE_STATIC_URL
@@ -257,7 +257,7 @@ namespace Riot
 		}
 
 		/* Retrieves list of rune data */
-		RuneList getRuneDataList(RuneListData rldata)
+		RuneList getRuneList(RuneListData rldata)
 		{
 			std::string url
 				= BASE_STATIC_URL
@@ -274,7 +274,7 @@ namespace Riot
 		}
 
 		/* Retrieves spell data by ID */
-		SummonerSpell getSpellData(long long spellID, SpellData sdata)
+		SummonerSpell getSpell(long long spellID, SpellData sdata)
 		{
 			std::string url
 				= BASE_STATIC_URL
@@ -292,7 +292,7 @@ namespace Riot
 		}
 
 		/* Retrieves list of spell data */
-		SummonerSpellList getSpellDataList(SpellData sdata)
+		SummonerSpellList getSpellList(SpellData sdata)
 		{
 			std::string url
 				= BASE_STATIC_URL

@@ -291,8 +291,8 @@ namespace Riot
 			print2DVector(indent, INDENT, "EFFECT:", data.effect);
 			printVector<std::string>(indent + "EFFECT BURN: ", data.effectBurn);
 			std::cout << indent << "ID: " << data.id << std::endl;
-			printImage(data.image);
-			printLevelTip(data.leveltip);
+			printImage(data.image, indent);
+			printLevelTip(data.leveltip, indent);
 			std::cout << indent << "MAX RANK: " << data.maxrank << std::endl;
 			std::cout << indent << "NAME: " << data.name << std::endl;
 			printVector<int>(indent + "RANGE: ", data.range);
