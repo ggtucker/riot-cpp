@@ -80,10 +80,10 @@ namespace Riot
 		RuneList getRuneList(RuneListData rldata=RuneListData::ALL);
 
 		/* Retrieves spell data by ID */
-		SummonerSpell getSpell(long long spellID, SpellData sdata=SpellData::ALL);
+		SummonerSpell getSummonerSpell(std::string spellID, SpellData sdata=SpellData::ALL);
 
 		/* Retrieves list of spell data */
-		SummonerSpellList getSpellList(SpellData sdata=SpellData::ALL);
+		SummonerSpellList getSummonerSpellList(SpellData sdata=SpellData::ALL);
 
 	// ----------API Resource: stats-v1.2---------- //
 

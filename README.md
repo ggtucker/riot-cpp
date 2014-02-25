@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 
 NOTE: THIS IS A WORK IN PROGRESS
 --------------------------------
-I'm nearly done, I just have to finish writing the rest of the DataParser functions. Currently the working API functions are:
+I am currently in the process of writing the rest of the DataParser functions. Currently the working API functions are:
 
 ```c++
 ChampionList getChampionList(bool freeToPlay=false);
@@ -40,7 +40,21 @@ ChampionData getChampionData(long long championID, ChampData cdata=ChampData::AL
 ChampionDataList getChampionDataList(ChampData cdata=ChampData::ALL);
 Item getItem(long long itemID, ItemData idata=ItemData::ALL);
 ItemList getItemList(ItemListData ildata=ItemListData::ALL);
+Mastery getMastery(long long masteryID, MasteryData mdata=MasteryData::ALL);
+MasteryList getMasteryList(MasteryListData mldata=MasteryListData::ALL);
+Realm getRealm();
+Rune getRune(long long runeID, RuneData rdata=RuneData::ALL);
+RuneList getRuneList(RuneListData rldata=RuneListData::ALL);
+SummonerSpell getSummonerSpell(long long spellID, SpellData sdata=SpellData::ALL);
+SummonerSpellList getSummonerSpellList(SpellData sdata=SpellData::ALL);
 ```
+
+To Do List
+----------
+- Finish writing the rest of the DataParser functions
+- For each of the DTOs, add a bool for each field to represent whether that field received a value
+- Modfiy RiotPrinter to only print fields that are valid (less irrelevant clutter being printed)
+- Revise and increase efficiency (i.e. pass by pointer to dynamically allocated data rather than by value, etc.)
 
 API Functions
 -------------
@@ -97,10 +111,10 @@ API Functions
 	RuneList getRuneList(RuneListData rldata=RuneListData::ALL);
 
 	/* Retrieves spell data by ID */
-	SummonerSpell getSpell(long long spellID, SpellData sdata=SpellData::ALL);
+	SummonerSpell getSummonerSpell(long long spellID, SpellData sdata=SpellData::ALL);
 
 	/* Retrieves list of spell data */
-	SummonerSpellList getSpellList(SpellData sdata=SpellData::ALL);
+	SummonerSpellList getSummonerSpellList(SpellData sdata=SpellData::ALL);
 
 // ----------API Resource: stats-v1.2---------- //
 
@@ -194,6 +208,27 @@ int main(int argc, char** argv)
 
 	Riot::ItemList itemList = Riot::getItemList();
 	Riot::RiotPrinter::printItemList(itemList);
+
+	Riot::Mastery banditMastery = Riot::getMastery(4352);
+	Riot::RiotPrinter::printMastery(banditMastery);
+
+	Riot::MasteryList masteryList = Riot::getMasteryList();
+	Riot::RiotPrinter::printMasteryList(masteryList);
+
+	Riot::Realm realm = Riot::getRealm();
+	Riot::RiotPrinter::printRealm(realm);
+
+	Riot::Rune greaterGlyphOfAP = Riot::getRune(5297);
+	Riot::RiotPrinter::printRune(greaterGlyphOfAP);
+
+	Riot::RuneList runeList = Riot::getRuneList();
+	Riot::RiotPrinter::printRuneList(runeList);
+
+	Riot::SummonerSpell smite = Riot::getSummonerSpell("SummonerSmite");
+	Riot::RiotPrinter::printSummonerSpell(smite);
+
+	Riot::SummonerSpellList spellList = Riot::getSummonerSpellList();
+	Riot::RiotPrinter::printSummonerSpellList(spellList);
 }
 ```
 

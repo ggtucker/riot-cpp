@@ -6,7 +6,7 @@ namespace Riot
 	{
 		AggregatedStats parseAggregatedStats(const Value& json)
 		{
-			AggregatedStats aggregatedStats;
+			AggregatedStats aggregatedStats = {};
 			
 			if(json.IsObject())
 			{
@@ -73,7 +73,7 @@ namespace Riot
 
 		BasicData parseBasicData(const Value& json)
 		{
-			BasicData basicData;
+			BasicData basicData = {};
 
 			if(json.IsObject())
 			{
@@ -85,7 +85,7 @@ namespace Riot
 
 		BasicDataStats parseBasicDataStats(const Value& json)
 		{
-			BasicDataStats basicDataStats;
+			BasicDataStats basicDataStats = {};
 
 			if(json.IsObject())
 			{
@@ -161,7 +161,7 @@ namespace Riot
 
 		Block parseBlock(const Value& json)
 		{
-			Block block;
+			Block block = {};
 
 			if(json.IsObject())
 			{
@@ -184,7 +184,7 @@ namespace Riot
 
 		BlockItem parseBlockItem(const Value& json)
 		{
-			BlockItem blockItem;
+			BlockItem blockItem = {};
 
 			if(json.IsObject())
 			{
@@ -197,7 +197,7 @@ namespace Riot
 
 		Champion parseChampion(const Value& json)
 		{
-			Champion champion;
+			Champion champion = {};
 
 			if(json.IsObject())
 			{
@@ -219,7 +219,7 @@ namespace Riot
 
 		ChampionData parseChampionData(const Value& json)
 		{
-			ChampionData championData;
+			ChampionData championData = {};
 
 			if(json.IsObject())
 			{
@@ -275,7 +275,7 @@ namespace Riot
 
 		ChampionDataList parseChampionDataList(const Value& json)
 		{
-			ChampionDataList championDataList;
+			ChampionDataList championDataList = {};
 
 			if(json.IsObject())
 			{
@@ -303,7 +303,7 @@ namespace Riot
 
 		ChampionList parseChampionList(const Value& json)
 		{
-			ChampionList championList;
+			ChampionList championList = {};
 
 			if(json.HasMember("champions"))
 			{
@@ -321,7 +321,7 @@ namespace Riot
 
 		ChampionSpell parseChampionSpell(const Value& json)
 		{
-			ChampionSpell championSpell;
+			ChampionSpell championSpell = {};
 
 			if(json.IsObject())
 			{
@@ -360,7 +360,7 @@ namespace Riot
 
 		ChampionStats parseChampionStats(const Value& json)
 		{
-			ChampionStats championStats;
+			ChampionStats championStats = {};
 
 			if(json.IsObject())
 			{
@@ -372,7 +372,7 @@ namespace Riot
 
 		Game parseGame(const Value& json)
 		{
-			Game game;
+			Game game = {};
 
 			if(json.IsObject())
 			{
@@ -407,7 +407,7 @@ namespace Riot
 
 		Gold parseGold(const Value& json)
 		{
-			Gold gold;
+			Gold gold = {};
 
 			if(json.IsObject())
 			{
@@ -422,7 +422,7 @@ namespace Riot
 
 		Group parseGroup(const Value& json)
 		{
-			Group group;
+			Group group = {};
 
 			if(json.IsObject())
 			{
@@ -435,7 +435,7 @@ namespace Riot
 
 		Image parseImage(const Value& json)
 		{
-			Image image;
+			Image image = {};
 
 			if(json.IsObject())
 			{
@@ -453,7 +453,7 @@ namespace Riot
 
 		Info parseInfo(const Value& json)
 		{
-			Info info;
+			Info info = {};
 
 			if(json.IsObject())
 			{
@@ -468,7 +468,7 @@ namespace Riot
 
 		Item parseItem(const Value& json)
 		{
-			Item item;
+			Item item = {};
 
 			if(json.IsObject())
 			{
@@ -500,7 +500,7 @@ namespace Riot
 
 		ItemList parseItemList(const Value& json)
 		{
-			ItemList itemList;
+			ItemList itemList = {};
 
 			if(json.IsObject())
 			{
@@ -547,7 +547,7 @@ namespace Riot
 
 		ItemTree parseItemTree(const Value& json)
 		{
-			ItemTree itemTree;
+			ItemTree itemTree = {};
 
 			if(json.IsObject())
 			{
@@ -560,7 +560,7 @@ namespace Riot
 
 		League parseLeague(const Value& json)
 		{
-			League league;
+			League league = {};
 
 			if(json.IsObject())
 			{
@@ -601,7 +601,7 @@ namespace Riot
 
 		LeagueItem parseLeagueItem(const Value& json)
 		{
-			LeagueItem leagueItem;
+			LeagueItem leagueItem = {};
 
 			if(json.IsObject())
 			{
@@ -641,7 +641,7 @@ namespace Riot
 
 		LevelTip parseLevelTip(const Value& json)
 		{
-			LevelTip levelTip;
+			LevelTip levelTip = {};
 
 			if(json.IsObject())
 			{
@@ -654,11 +654,16 @@ namespace Riot
 
 		Mastery parseMastery(const Value& json)
 		{
-			Mastery mastery;
+			Mastery mastery = {};
 			
 			if(json.IsObject())
 			{
-
+				mastery.description = parseStringVector(json["description"]);
+				assignValue(mastery.id, json["id"]);
+				mastery.image = parseImage(json["image"]);
+				assignValue(mastery.name, json["name"]);
+				assignValue(mastery.prereq, json["prereq"]);
+				assignValue(mastery.ranks, json["ranks"]);
 			}
 
 			return mastery;
@@ -666,11 +671,26 @@ namespace Riot
 
 		MasteryList parseMasteryList(const Value& json)
 		{
-			MasteryList masteryList;
+			MasteryList masteryList = {};
 			
 			if(json.IsObject())
 			{
+				masteryList.tree = parseMasteryTree(json["tree"]);
+				assignValue(masteryList.type, json["type"]);
+				assignValue(masteryList.version, json["version"]);
 
+				if(json.HasMember("data"))
+				{
+					std::map<std::string, Mastery> data;
+					if(json["data"].IsObject())
+					{
+						for (rapidjson::Value::ConstMemberIterator itr = json["data"].MemberBegin(); itr != json["data"].MemberEnd(); ++itr)
+						{
+							data[itr->name.GetString()] = parseMastery(itr->value);
+						}
+					}
+					masteryList.data = data;
+				}
 			}
 
 			return masteryList;
@@ -678,7 +698,7 @@ namespace Riot
 
 		MasteryPage parseMasteryPage(const Value& json)
 		{
-			MasteryPage masteryPage;
+			MasteryPage masteryPage = {};
 			
 			if(json.IsObject())
 			{
@@ -690,7 +710,7 @@ namespace Riot
 
 		MasteryPages parseMasteryPages(const Value& json)
 		{
-			MasteryPages masteryPages;
+			MasteryPages masteryPages = {};
 			
 			if(json.IsObject())
 			{
@@ -714,11 +734,40 @@ namespace Riot
 
 		MasteryTree parseMasteryTree(const Value& json)
 		{
-			MasteryTree masteryTree;
+			MasteryTree masteryTree = {};
 			
 			if(json.IsObject())
 			{
-
+				if(json.HasMember("Defense"))
+				{
+					std::vector<MasteryTreeList> defenseTree;
+					const Value& defenseTreeDto = json["Defense"];
+					for (SizeType i = 0; i < defenseTreeDto.Size(); i++)
+					{
+						defenseTree.push_back(parseMasteryTreeList(defenseTreeDto[i]));
+					}
+					masteryTree.Defense = defenseTree;
+				}
+				if(json.HasMember("Offense"))
+				{
+					std::vector<MasteryTreeList> offenseTree;
+					const Value& offenseTreeDto = json["Offense"];
+					for (SizeType i = 0; i < offenseTreeDto.Size(); i++)
+					{
+						offenseTree.push_back(parseMasteryTreeList(offenseTreeDto[i]));
+					}
+					masteryTree.Offense = offenseTree;
+				}
+				if(json.HasMember("Utility"))
+				{
+					std::vector<MasteryTreeList> utilityTree;
+					const Value& utilityTreeDto = json["Utility"];
+					for (SizeType i = 0; i < utilityTreeDto.Size(); i++)
+					{
+						utilityTree.push_back(parseMasteryTreeList(utilityTreeDto[i]));
+					}
+					masteryTree.Utility = utilityTree;
+				}
 			}
 
 			return masteryTree;
@@ -726,11 +775,12 @@ namespace Riot
 
 		MasteryTreeItem parseMasteryTreeItem(const Value& json)
 		{
-			MasteryTreeItem masteryTreeItem;
+			MasteryTreeItem masteryTreeItem = {};
 			
 			if(json.IsObject())
 			{
-
+				assignValue(masteryTreeItem.masteryId, json["masteryId"]);
+				assignValue(masteryTreeItem.prereq, json["prereq"]);
 			}
 
 			return masteryTreeItem;
@@ -738,11 +788,20 @@ namespace Riot
 
 		MasteryTreeList parseMasteryTreeList(const Value& json)
 		{
-			MasteryTreeList masteryTreeList;
+			MasteryTreeList masteryTreeList = {};
 			
 			if(json.IsObject())
 			{
-
+				if(json.HasMember("masteryTreeItems"))
+				{
+					std::vector<MasteryTreeItem> masteryTreeItems;
+					const Value& masteryTreeItemsDto = json["masteryTreeItems"];
+					for (SizeType i = 0; i < masteryTreeItemsDto.Size(); i++)
+					{
+						masteryTreeItems.push_back(parseMasteryTreeItem(masteryTreeItemsDto[i]));
+					}
+					masteryTreeList.masteryTreeItems = masteryTreeItems;
+				}
 			}
 
 			return masteryTreeList;
@@ -750,7 +809,7 @@ namespace Riot
 
 		MatchHistorySummary parseMatchHistorySummary(const Value& json)
 		{
-			MatchHistorySummary matchHistorySummary;
+			MatchHistorySummary matchHistorySummary = {};
 			
 			if(json.IsObject())
 			{
@@ -762,7 +821,7 @@ namespace Riot
 
 		MessageOfDay parseMessageOfDay(const Value& json)
 		{
-			MessageOfDay messageOfDay;
+			MessageOfDay messageOfDay = {};
 			
 			if(json.IsObject())
 			{
@@ -774,7 +833,7 @@ namespace Riot
 
 		MetaData parseMetaData(const Value& json)
 		{
-			MetaData metaData;
+			MetaData metaData = {};
 			
 			if(json.IsObject())
 			{
@@ -788,7 +847,7 @@ namespace Riot
 
 		MiniSeries parseMiniSeries(const Value& json)
 		{
-			MiniSeries miniSeries;
+			MiniSeries miniSeries = {};
 			
 			if(json.IsObject())
 			{
@@ -804,7 +863,7 @@ namespace Riot
 
 		Passive parsePassive(const Value& json)
 		{
-			Passive passive;
+			Passive passive = {};
 
 			if(json.IsObject())
 			{
@@ -818,7 +877,7 @@ namespace Riot
 
 		Player parsePlayer(const Value& json)
 		{
-			Player player;
+			Player player = {};
 
 			if(json.IsObject())
 			{
@@ -832,7 +891,7 @@ namespace Riot
 
 		PlayerStatsSummary parsePlayerStatsSummary(const Value& json)
 		{
-			PlayerStatsSummary playerStatsSummary;
+			PlayerStatsSummary playerStatsSummary = {};
 			
 			if(json.IsObject())
 			{
@@ -844,7 +903,7 @@ namespace Riot
 
 		PlayerStatsSummaryList parsePlayerStatsSummaryList(const Value& json)
 		{
-			PlayerStatsSummaryList playerStatsSummaryList;
+			PlayerStatsSummaryList playerStatsSummaryList = {};
 			
 			if(json.IsObject())
 			{
@@ -856,7 +915,7 @@ namespace Riot
 
 		RankedStats parseRankedStats(const Value& json)
 		{
-			RankedStats rankedStats;
+			RankedStats rankedStats = {};
 			
 			if(json.IsObject())
 			{
@@ -868,7 +927,7 @@ namespace Riot
 
 		RawStats parseRawStats(const Value& json)
 		{
-			RawStats rawStats;
+			RawStats rawStats = {};
 
 			if(json.IsObject())
 			{
@@ -955,11 +1014,19 @@ namespace Riot
 
 		Realm parseRealm(const Value& json)
 		{
-			Realm realm;
+			Realm realm = {};
 			
 			if(json.IsObject())
 			{
-
+				assignValue(realm.cdn, json["cdn"]);
+				assignValue(realm.css, json["css"]);
+				assignValue(realm.dd, json["dd"]);
+				assignValue(realm.l, json["l"]);
+				assignValue(realm.lg, json["lg"]);
+				realm.n = parseStringByStringMap(json["n"]);
+				assignValue(realm.profileiconmax, json["profileiconmax"]);
+				assignValue(realm.store, json["store"]);
+				assignValue(realm.v, json["v"]);
 			}
 
 			return realm;
@@ -1018,7 +1085,7 @@ namespace Riot
 
 		Roster parseRoster(const Value& json)
 		{
-			Roster roster;
+			Roster roster = {};
 			
 			if(json.IsObject())
 			{
@@ -1030,11 +1097,31 @@ namespace Riot
 
 		Rune parseRune(const Value& json)
 		{
-			Rune rune;
+			Rune rune = {};
 			
 			if(json.IsObject())
 			{
-
+				assignValue(rune.colloq, json["colloq"]);
+				assignValue(rune.consumeOnFull, json["consumeOnFull"]);
+				assignValue(rune.consumed, json["consumed"]);
+				assignValue(rune.depth, json["depth"]);
+				assignValue(rune.description, json["description"]);
+				rune.from = parseStringVector(json["from"]);
+				rune.gold = parseGold(json["gold"]);
+				assignValue(rune.group, json["group"]);
+				assignValue(rune.hideFromAll, json["hideFromAll"]);
+				rune.image = parseImage(json["image"]);
+				assignValue(rune.inStore, json["inStore"]);
+				rune.into = parseStringVector(json["into"]);
+				rune.maps = parseBoolByStringMap(json["maps"]);
+				assignValue(rune.name, json["name"]);
+				assignValue(rune.plaintext, json["plaintext"]);
+				assignValue(rune.requiredChampion, json["requiredChampion"]);
+				rune.rune = parseMetaData(json["rune"]);
+				assignValue(rune.specialRecipe, json["specialRecipe"]);
+				assignValue(rune.stacks, json["stacks"]);
+				rune.stats = parseBasicDataStats(json["stats"]);
+				rune.tags = parseStringVector(json["tags"]);
 			}
 
 			return rune;
@@ -1042,11 +1129,26 @@ namespace Riot
 
 		RuneList parseRuneList(const Value& json)
 		{
-			RuneList runeList;
+			RuneList runeList = {};
 			
 			if(json.IsObject())
 			{
+				runeList.basic = parseBasicData(json["basic"]);
+				assignValue(runeList.type, json["type"]);
+				assignValue(runeList.version, json["version"]);
 
+				if(json.HasMember("data"))
+				{
+					std::map<std::string, Rune> data;
+					if(json["data"].IsObject())
+					{
+						for (rapidjson::Value::ConstMemberIterator itr = json["data"].MemberBegin(); itr != json["data"].MemberEnd(); ++itr)
+						{
+							data[itr->name.GetString()] = parseRune(itr->value);
+						}
+					}
+					runeList.data = data;
+				}
 			}
 
 			return runeList;
@@ -1054,7 +1156,7 @@ namespace Riot
 
 		RunePage parseRunePage(const Value& json)
 		{
-			RunePage runePage;
+			RunePage runePage = {};
 			
 			if(json.IsObject())
 			{
@@ -1066,7 +1168,7 @@ namespace Riot
 
 		RunePages parseRunePages(const Value& json)
 		{
-			RunePages runePages;
+			RunePages runePages = {};
 			
 			if(json.IsObject())
 			{
@@ -1090,7 +1192,7 @@ namespace Riot
 
 		RuneSlot parseRuneSlot(const Value& json)
 		{
-			RuneSlot runeSlot;
+			RuneSlot runeSlot = {};
 			
 			if(json.IsObject())
 			{
@@ -1102,7 +1204,7 @@ namespace Riot
 
 		RuneSlotted parseRuneSlotted(const Value& json)
 		{
-			RuneSlotted runeSlotted;
+			RuneSlotted runeSlotted = {};
 			
 			if(json.IsObject())
 			{
@@ -1114,7 +1216,7 @@ namespace Riot
 
 		Skin parseSkin(const Value& json)
 		{
-			Skin skin;
+			Skin skin = {};
 
 			if(json.IsObject())
 			{
@@ -1128,7 +1230,7 @@ namespace Riot
 
 		SpellVars parseSpellVars(const Value& json)
 		{
-			SpellVars spellVars;
+			SpellVars spellVars = {};
 
 			if(json.IsObject())
 			{
@@ -1142,7 +1244,7 @@ namespace Riot
 
 		Stats parseStats(const Value& json)
 		{
-			Stats stats;
+			Stats stats = {};
 
 			if(json.IsObject())
 			{
@@ -1173,7 +1275,7 @@ namespace Riot
 
 		Summoner parseSummoner(const Value& json)
 		{
-			Summoner summoner;
+			Summoner summoner = {};
 			
 			if(json.IsObject())
 			{
@@ -1221,11 +1323,39 @@ namespace Riot
 
 		SummonerSpell parseSummonerSpell(const Value& json)
 		{
-			SummonerSpell summonerSpell;
+			SummonerSpell summonerSpell = {};
 			
 			if(json.IsObject())
 			{
+				summonerSpell.cooldown = parseIntVector(json["cooldown"]);
+				assignValue(summonerSpell.cooldownBurn, json["cooldownBurn"]);
+				summonerSpell.cost = parseIntVector(json["cost"]);
+				assignValue(summonerSpell.costBurn, json["costBurn"]);
+				assignValue(summonerSpell.costType, json["costType"]);
+				assignValue(summonerSpell.description, json["description"]);
+				summonerSpell.effect = parse2DIntVector(json["effect"]);
+				summonerSpell.effectBurn = parseStringVector(json["effectBurn"]);
+				assignValue(summonerSpell.id, json["id"]);
+				summonerSpell.image = parseImage(json["image"]);
+				summonerSpell.leveltip = parseLevelTip(json["leveltip"]);
+				assignValue(summonerSpell.maxrank, json["maxrank"]);
+				summonerSpell.modes = parseStringVector(json["modes"]);
+				assignValue(summonerSpell.name, json["name"]);
+				summonerSpell.range = parseIntVector(json["range"]);
+				assignValue(summonerSpell.rangeBurn, json["rangeBurn"]);
+				assignValue(summonerSpell.resource, json["resource"]);
+				assignValue(summonerSpell.tooltip, json["tooltip"]);
 
+				if(json.HasMember("vars"))
+				{
+					std::vector<SpellVars> vars;
+					const Value& varsListDto = json["vars"];
+					for (SizeType i = 0; i < varsListDto.Size(); i++)
+					{
+						vars.push_back(parseSpellVars(varsListDto[i]));
+					}
+					summonerSpell.vars = vars;
+				}
 			}
 
 			return summonerSpell;
@@ -1233,11 +1363,28 @@ namespace Riot
 
 		SummonerSpellList parseSummonerSpellList(const Value& json)
 		{
-			SummonerSpellList summonerSpellList;
+			SummonerSpellList summonerSpellList = {};
 			
 			if(json.IsObject())
 			{
+				if(json.IsObject())
+			{
+				assignValue(summonerSpellList.type, json["type"]);
+				assignValue(summonerSpellList.version, json["version"]);
 
+				if(json.HasMember("data"))
+				{
+					std::map<std::string, SummonerSpell> data;
+					if(json["data"].IsObject())
+					{
+						for (rapidjson::Value::ConstMemberIterator itr = json["data"].MemberBegin(); itr != json["data"].MemberEnd(); ++itr)
+						{
+							data[itr->name.GetString()] = parseSummonerSpell(itr->value);
+						}
+					}
+					summonerSpellList.data = data;
+				}
+			}
 			}
 
 			return summonerSpellList;
@@ -1245,7 +1392,7 @@ namespace Riot
 
 		Talent parseTalent(const Value& json)
 		{
-			Talent talent;
+			Talent talent = {};
 			
 			if(json.IsObject())
 			{
@@ -1257,7 +1404,7 @@ namespace Riot
 
 		Team parseTeam(const Value& json)
 		{
-			Team team;
+			Team team = {};
 			
 			if(json.IsObject())
 			{
@@ -1293,7 +1440,7 @@ namespace Riot
 
 		TeamMemberInfo parseTeamMemberInfo(const Value& json)
 		{
-			TeamMemberInfo teamMemberInfo;
+			TeamMemberInfo teamMemberInfo = {};
 			
 			if(json.IsObject())
 			{
@@ -1305,7 +1452,7 @@ namespace Riot
 
 		TeamStatDetail parseTeamStatDetail(const Value& json)
 		{
-			TeamStatDetail teamStatDetail;
+			TeamStatDetail teamStatDetail = {};
 			
 			if(json.IsObject())
 			{
@@ -1317,7 +1464,7 @@ namespace Riot
 
 		TeamStatSummary parseTeamStatSummary(const Value& json)
 		{
-			TeamStatSummary teamStatSummary;
+			TeamStatSummary teamStatSummary = {};
 			
 			if(json.IsObject())
 			{

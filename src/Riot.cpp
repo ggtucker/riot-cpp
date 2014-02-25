@@ -224,7 +224,7 @@ namespace Riot
 		}
 
 		/* Retrieves realm data */
-		Realm getRealm(Region reg)
+		Realm getRealm()
 		{
 			std::string url
 				= BASE_STATIC_URL
@@ -274,14 +274,14 @@ namespace Riot
 		}
 
 		/* Retrieves spell data by ID */
-		SummonerSpell getSpell(long long spellID, SpellData sdata)
+		SummonerSpell getSummonerSpell(std::string spellID, SpellData sdata)
 		{
 			std::string url
 				= BASE_STATIC_URL
 				+ toString(region)
 				+ STATIC_API_VERSION
 				+ "summoner-spell/"
-				+ std::to_string(spellID)
+				+ spellID
 				+ "?locale=" + toString(locale)
 				+ "&spellData=" + toString(sdata)
 				+ "&api_key=" + api_key;
@@ -292,7 +292,7 @@ namespace Riot
 		}
 
 		/* Retrieves list of spell data */
-		SummonerSpellList getSpellList(SpellData sdata)
+		SummonerSpellList getSummonerSpellList(SpellData sdata)
 		{
 			std::string url
 				= BASE_STATIC_URL
