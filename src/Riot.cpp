@@ -370,7 +370,7 @@ namespace Riot
 
 			rapidjson::Document json;
 			json.Parse<0>(URLReader::read(url).c_str());
-			return RiotParser::parseMasteryPagesMap(json);
+			return RiotParser::parseMasteryPagesById(json);
 		}
 
 		/* Retrieves rune pages for given summoner ID */

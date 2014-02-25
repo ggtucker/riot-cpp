@@ -1,5 +1,5 @@
 #include <RiotCPP/Parser/RiotParser.hpp>
-
+#include <iostream>
 namespace Riot
 {
 	namespace RiotParser
@@ -77,7 +77,27 @@ namespace Riot
 
 			if(json.IsObject())
 			{
-
+				assignValue(basicData.colloq, json["colloq"]);
+				assignValue(basicData.consumeOnFull, json["consumeOnFull"]);
+				assignValue(basicData.consumed, json["consumed"]);
+				assignValue(basicData.depth, json["depth"]);
+				assignValue(basicData.description, json["description"]);
+				basicData.from = parseStringVector(json["from"]);
+				basicData.gold = parseGold(json["gold"]);
+				assignValue(basicData.group, json["group"]);
+				assignValue(basicData.hideFromAll, json["hideFromAll"]);
+				basicData.image = parseImage(json["image"]);
+				assignValue(basicData.inStore, json["inStore"]);
+				basicData.into = parseStringVector(json["into"]);
+				basicData.maps = parseBoolByStringMap(json["maps"]);
+				assignValue(basicData.name, json["name"]);
+				assignValue(basicData.plaintext, json["plaintext"]);
+				assignValue(basicData.requiredChampion, json["requiredChampion"]);
+				basicData.rune = parseMetaData(json["rune"]);
+				assignValue(basicData.specialRecipe, json["specialRecipe"]);
+				assignValue(basicData.stacks, json["stacks"]);
+				basicData.stats = parseBasicDataStats(json["stats"]);
+				basicData.tags = parseStringVector(json["tags"]);
 			}
 
 			return basicData;
@@ -364,7 +384,9 @@ namespace Riot
 
 			if(json.IsObject())
 			{
-
+				assignValue(championStats.id, json["id"]);
+				assignValue(championStats.name, json["name"]);
+				championStats.stats = parseAggregatedStats(json["stats"]);
 			}
 
 			return championStats;
@@ -702,7 +724,20 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
+				assignValue(masteryPage.current, json["current"]);
+				assignValue(masteryPage.id, json["id"]);
+				assignValue(masteryPage.name, json["name"]);
 
+				if(json.HasMember("talents"))
+				{
+					std::vector<Talent> talents;
+					const Value& talentListDto = json["talents"];
+					for (SizeType i = 0; i < talentListDto.Size(); i++)
+					{
+						talents.push_back(parseTalent(talentListDto[i]));
+					}
+					masteryPage.talents = talents;
+				}
 			}
 
 			return masteryPage;
@@ -714,22 +749,36 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
+				assignValue(masteryPages.summonerId, json["summonerId"]);
 
+				if(json.HasMember("pages"))
+				{
+					std::vector<MasteryPage> pages;
+					const Value& masteryPageListDto = json["pages"];
+					for (SizeType i = 0; i < masteryPageListDto.Size(); i++)
+					{
+						pages.push_back(parseMasteryPage(masteryPageListDto[i]));
+					}
+					masteryPages.pages = pages;
+				}
 			}
 
 			return masteryPages;
 		}
 
-		std::map<long long, MasteryPages> parseMasteryPagesMap(const Value& json)
+		std::map<long long, MasteryPages> parseMasteryPagesById(const Value& json)
 		{
-			std::map<long long, MasteryPages> masteryPagesMap;
+			std::map<long long, MasteryPages> masteryPagesById;
 			
 			if(json.IsObject())
 			{
-
+				for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
+				{
+					masteryPagesById[itr->name.GetInt64()] = parseMasteryPages(itr->value);
+				}
 			}
 
-			return masteryPagesMap;
+			return masteryPagesById;
 		}
 
 		MasteryTree parseMasteryTree(const Value& json)
@@ -813,7 +862,17 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				assignValue(matchHistorySummary.assists, json["assists"]);
+				assignValue(matchHistorySummary.date, json["date"]);
+				assignValue(matchHistorySummary.deaths, json["deaths"]);
+				assignValue(matchHistorySummary.gameId, json["gameId"]);
+				assignValue(matchHistorySummary.gameMode, json["gameMode"]);
+				assignValue(matchHistorySummary.invalid, json["invalid"]);
+				assignValue(matchHistorySummary.kills, json["kills"]);
+				assignValue(matchHistorySummary.mapId, json["mapId"]);
+				assignValue(matchHistorySummary.opposingTeamKills, json["opposingTeamKills"]);
+				assignValue(matchHistorySummary.opposingTeamName, json["opposingTeamName"]);
+				assignValue(matchHistorySummary.win, json["win"]);
 			}
 
 			return matchHistorySummary;
@@ -825,7 +884,9 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				assignValue(messageOfDay.createDate, json["createDate"]);
+				assignValue(messageOfDay.message, json["message"]);
+				assignValue(messageOfDay.version, json["version"]);
 			}
 
 			return messageOfDay;
@@ -895,7 +956,11 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				playerStatsSummary.aggregatedStats = parseAggregatedStats(json["aggregatedStats"]);
+				assignValue(playerStatsSummary.losses, json["losses"]);
+				assignValue(playerStatsSummary.modifyDate, json["modifyDate"]);
+				assignValue(playerStatsSummary.playerStatSummaryType, json["playerStatSummaryType"]);
+				assignValue(playerStatsSummary.wins, json["wins"]);
 			}
 
 			return playerStatsSummary;
@@ -907,7 +972,18 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
+				assignValue(playerStatsSummaryList.summonerId, json["summonerId"]);
 
+				if(json.HasMember("playerStatSummaries"))
+				{
+					std::vector<PlayerStatsSummary> playerStatSummaries;
+					const Value& championListDto = json["playerStatSummaries"];
+					for (SizeType i = 0; i < championListDto.Size(); i++)
+					{
+						playerStatSummaries.push_back(parsePlayerStatsSummary(championListDto[i]));
+					}
+					playerStatsSummaryList.playerStatSummaries = playerStatSummaries;
+				}
 			}
 
 			return playerStatsSummaryList;
@@ -919,7 +995,19 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
+				assignValue(rankedStats.modifyDate, json["modifyDate"]);
+				assignValue(rankedStats.summonerId, json["summonerId"]);
 
+				if(json.HasMember("champions"))
+				{
+					std::vector<ChampionStats> champions;
+					const Value& championListDto = json["champions"];
+					for (SizeType i = 0; i < championListDto.Size(); i++)
+					{
+						champions.push_back(parseChampionStats(championListDto[i]));
+					}
+					rankedStats.champions = champions;
+				}
 			}
 
 			return rankedStats;
@@ -1089,7 +1177,18 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
+				assignValue(roster.ownerId, json["ownerId"]);
 
+				if(json.HasMember("memberList"))
+				{
+					std::vector<TeamMemberInfo> memberList;
+					const Value& memberListDto = json["memberList"];
+					for (SizeType i = 0; i < memberListDto.Size(); i++)
+					{
+						memberList.push_back(parseTeamMemberInfo(memberListDto[i]));
+					}
+					roster.memberList = memberList;
+				}
 			}
 
 			return roster;
@@ -1160,7 +1259,20 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				assignValue(runePage.current, json["current"]);
+				assignValue(runePage.id, json["id"]);
+				assignValue(runePage.name, json["name"]);
+				
+				if(json.HasMember("slots"))
+				{
+					std::vector<RuneSlot> slots;
+					const Value& slotListDto = json["slots"];
+					for (SizeType i = 0; i < slotListDto.Size(); i++)
+					{
+						slots.push_back(parseRuneSlot(slotListDto[i]));
+					}
+					runePage.slots = slots;
+				}
 			}
 
 			return runePage;
@@ -1172,7 +1284,18 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				assignValue(runePages.summonerId, json["summonerId"]);
+				
+				if(json.HasMember("pages"))
+				{
+					std::vector<RunePage> pages;
+					const Value& runePageListDto = json["pages"];
+					for (SizeType i = 0; i < runePageListDto.Size(); i++)
+					{
+						pages.push_back(parseRunePage(runePageListDto[i]));
+					}
+					runePages.pages = pages;
+				}
 			}
 
 			return runePages;
@@ -1184,7 +1307,10 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
+				{
+					runePagesById[itr->name.GetInt64()] = parseRunePages(itr->value);
+				}
 			}
 
 			return runePagesById;
@@ -1196,7 +1322,8 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				runeSlot.rune = parseRuneSlotted(json["rune"]);
+				assignValue(runeSlot.runeSlotId, json["runeSlotId"]);
 			}
 
 			return runeSlot;
@@ -1208,7 +1335,10 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				assignValue(runeSlotted.description, json["description"]);
+				assignValue(runeSlotted.id, json["id"]);
+				assignValue(runeSlotted.name, json["name"]);
+				assignValue(runeSlotted.tier, json["tier"]);
 			}
 
 			return runeSlotted;
@@ -1279,7 +1409,11 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				assignValue(summoner.id, json["id"]);
+				assignValue(summoner.name, json["name"]);
+				assignValue(summoner.profileIconId, json["profileIconId"]);
+				assignValue(summoner.revisionDate, json["revisionDate"]);
+				assignValue(summoner.summonerLevel, json["summonerLevel"]);
 			}
 
 			return summoner;
@@ -1291,7 +1425,10 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
+				{
+					summonerNamesById[itr->name.GetInt64()] = itr->value.GetString();
+				}
 			}
 
 			return summonerNamesById;
@@ -1303,7 +1440,10 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
+				{
+					summonersById[itr->name.GetInt64()] = parseSummoner(itr->value);
+				}
 			}
 
 			return summonersById;
@@ -1315,7 +1455,10 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
+				{
+					summonersByName[itr->name.GetString()] = parseSummoner(itr->value);
+				}
 			}
 
 			return summonersByName;
@@ -1367,8 +1510,6 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-				if(json.IsObject())
-			{
 				assignValue(summonerSpellList.type, json["type"]);
 				assignValue(summonerSpellList.version, json["version"]);
 
@@ -1385,7 +1526,6 @@ namespace Riot
 					summonerSpellList.data = data;
 				}
 			}
-			}
 
 			return summonerSpellList;
 		}
@@ -1396,7 +1536,9 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				assignValue(talent.id, json["id"]);
+				assignValue(talent.name, json["name"]);
+				assignValue(talent.rank, json["rank"]);
 			}
 
 			return talent;
@@ -1408,7 +1550,31 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
+				assignValue(team.createDate, json["createDate"]);
+				assignValue(team.fullId, json["fullId"]);
+				assignValue(team.lastGameDate, json["lastGameDate"]);
+				assignValue(team.lastJoinDate, json["lastJoinDate"]);
+				assignValue(team.lastJoinedRankedTeamQueueDate, json["lastJoinedRankedTeamQueueDate"]);
+				team.messageOfDay = parseMessageOfDay(json["messageOfDay"]);
+				assignValue(team.modifyDate, json["modifyDate"]);
+				assignValue(team.name, json["name"]);
+				team.roster = parseRoster(json["roster"]);
+				assignValue(team.secondLastJoinDate, json["secondLastJoinDate"]);
+				assignValue(team.status, json["status"]);
+				assignValue(team.tag, json["tag"]);
+				team.teamStatSummary = parseTeamStatSummary(json["teamStatSummary"]);
+				assignValue(team.thirdLastJoinDate, json["thirdLastJoinDate"]);
 
+				if(json.HasMember("matchHistory"))
+				{
+					std::vector<MatchHistorySummary> matchHistory;
+					const Value& matchHistoryListDto = json["matchHistory"];
+					for (SizeType i = 0; i < matchHistoryListDto.Size(); i++)
+					{
+						matchHistory.push_back(parseMatchHistorySummary(matchHistoryListDto[i]));
+					}
+					team.matchHistory = matchHistory;
+				}
 			}
 
 			return team;
@@ -1420,7 +1586,10 @@ namespace Riot
 			
 			if(json.IsArray())
 			{
-
+				for (SizeType i = 0; i < json.Size(); i++)
+				{
+					teamList.push_back(parseTeam(json[i]));
+				}
 			}
 
 			return teamList;
@@ -1432,7 +1601,10 @@ namespace Riot
 
 			if(json.IsObject())
 			{
-
+				for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
+				{
+					teamsById[itr->name.GetString()] = parseTeam(itr->value);
+				}
 			}
 
 			return teamsById;
@@ -1444,7 +1616,10 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				assignValue(teamMemberInfo.inviteDate, json["inviteDate"]);
+				assignValue(teamMemberInfo.joinDate, json["joinDate"]);
+				assignValue(teamMemberInfo.playerId, json["playerId"]);
+				assignValue(teamMemberInfo.status, json["status"]);
 			}
 
 			return teamMemberInfo;
@@ -1456,7 +1631,11 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
-
+				assignValue(teamStatDetail.averageGamesPlayed, json["averageGamesPlayed"]);
+				assignValue(teamStatDetail.fullId, json["fullId"]);
+				assignValue(teamStatDetail.losses, json["losses"]);
+				assignValue(teamStatDetail.teamStatType, json["teamStatType"]);
+				assignValue(teamStatDetail.wins, json["wins"]);
 			}
 
 			return teamStatDetail;
@@ -1468,7 +1647,18 @@ namespace Riot
 			
 			if(json.IsObject())
 			{
+				assignValue(teamStatSummary.fullId, json["fullId"]);
 
+				if(json.HasMember("teamStatDetails"))
+				{
+					std::vector<TeamStatDetail> teamStatDetails;
+					const Value& teamStatDetailListDto = json["teamStatDetails"];
+					for (SizeType i = 0; i < teamStatDetailListDto.Size(); i++)
+					{
+						teamStatDetails.push_back(parseTeamStatDetail(teamStatDetailListDto[i]));
+					}
+					teamStatSummary.teamStatDetails = teamStatDetails;
+				}
 			}
 
 			return teamStatSummary;

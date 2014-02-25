@@ -66,7 +66,7 @@ namespace Riot
 			MasteryList parseMasteryList(const Value& json);
 			MasteryPage parseMasteryPage(const Value& json);
 			MasteryPages parseMasteryPages(const Value& json);
-			std::map<long long, MasteryPages> parseMasteryPagesMap(const Value& json);
+			std::map<long long, MasteryPages> parseMasteryPagesById(const Value& json);
 			MasteryTree parseMasteryTree(const Value& json);
 			MasteryTreeItem parseMasteryTreeItem(const Value& json);
 			MasteryTreeList parseMasteryTreeList(const Value& json);

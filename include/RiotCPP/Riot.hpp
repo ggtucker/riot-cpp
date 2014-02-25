@@ -107,9 +107,11 @@ namespace Riot
 		/* Retrieves rune pages for each of the given summoner IDs */
 		std::map<long long, RunePages> getRunePages(const std::vector<long long>& summonerIDs);
 
+		/* NAME MUST BE ALL LOWERCASE */
 		/* Retrieves summoner for given summoner name */
 		Summoner getSummoner(const std::string& summonerName);
 
+		/* NAME KEYS ARE ALL LOWERCASE */
 		/* Retrieves summoner for each of the given summoner names */
 		std::map<std::string, Summoner> getSummoners(const std::vector<std::string>& summonerNames);
 
